@@ -1,8 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '.tests/pages/login_page';
 
 test.describe('Test Suite 1', () => {
  test('Test Case 1', async ({ page }) => {
-  
+  const loginPage = new LoginPage(page);
+  await loginPage.goto();
+  await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
+  await page.waitForTimeout(5000);
+  });
+})
   /**
   //login & assertions:
   await page.goto(`${process.env.BASE_URL}`);
@@ -14,10 +20,4 @@ test.describe('Test Suite 1', () => {
   // logout:
   await page.getByRole('button', { name: 'Logout' }).click();
   expect(page.url()).toBe('http://localhost:3000/login');
-  await expect(page.getByRole('link', { name: 'Tester Hotel' })).toBeVisible();
-
-  // explicit wait
-  await page.waitForTimeout(2000);
-  }); 
-  */
-});
+  await expect(page.getByRole('link', { name: 'Tester Hotel' })).toBeVisible();*/

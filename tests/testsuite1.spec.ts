@@ -13,8 +13,8 @@ test.describe('Test Suite 1', () => {
   await expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible();
   // logout:
   await page.getByRole('button', { name: 'Logout' }).click();
-  expect(page.url()).toBe('http://localhost:3000/login'); //assertion
-  await expect(page.getByRole('link', { name: 'Tester Hotel' })).toBeVisible(); //assertion
+  expect(page.url()).toBe('http://localhost:3000/login');
+  await expect(page.getByRole('link', { name: 'Tester Hotel' })).toBeVisible();
 
   // explicit wait
   await page.waitForTimeout(2000);

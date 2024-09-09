@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Test Suite 1', () => {
  test('Test Case 1', async ({ page }) => {
-  await page.goto('http://localhost:3000/login');
   
   //login & assertions:
   await page.goto(`${process.env.BASE_URL}`);

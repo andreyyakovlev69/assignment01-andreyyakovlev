@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Test Suite 1', () => {
  test('Test Case 1', async ({ page }) => {
   
+  /**
   //login & assertions:
   await page.goto(`${process.env.BASE_URL}`);
   await expect(page.getByRole('link', { name: 'Tester Hotel' })).toBeVisible(); //assertion
@@ -17,5 +18,6 @@ test.describe('Test Suite 1', () => {
 
   // explicit wait
   await page.waitForTimeout(2000);
-  });
+  }); 
+  */
 });

@@ -15,22 +15,15 @@ test.describe('Test Suite 1', () => {
 
   })
  test('Test Case 1 Login', async ({ page }) => {
-  // const loginPage = new LoginPage(page);
-  // await loginPage.goto();
-  // await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
   await expect(page).toHaveURL('http://localhost:3000/');  
   expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible;
   });
 
   test('Test Case 2 Reservation', async ({ page }) => {
-    // const loginPage = new LoginPage(page);
-    // const reservationPage = new ReservationPage(page);
-    // await loginPage.goto();
-    // await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
     await reservationPage.performView();
     expect(page.getByText('Reservations')).toBeVisible;
   
-    //apply following for next TC:
+    //apply following for Logout TC:
     //await logoutPage.performLogout();
     //await expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
     });

@@ -6,7 +6,7 @@ export class ReservationPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.viewButton = page.locator('div').filter({ hasText: /^ReservationsTotal: 1Current: 0View$/ }).getByRole('link');
+    this.viewButton = page.locator('#app > div > div > div:nth-child(4) > a')
   }
 
   //Methods:

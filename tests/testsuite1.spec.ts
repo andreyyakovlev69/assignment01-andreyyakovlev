@@ -1,12 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from './pages/login_page.ts'
+import { LoginPage } from './pages/login_page'
 
 test.describe('Test Suite 1', () => {
  test('Test Case 1', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goto();
   await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
-  await page.waitForTimeout(5000);
+  await expect(page).toHaveURL('http://localhost:3000/');  
+  expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible;
   });
 })
   /**

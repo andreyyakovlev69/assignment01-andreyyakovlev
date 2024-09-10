@@ -4,23 +4,33 @@ import {LogoutPage} from './pages/logout_page';
 import { ReservationPage } from './pages/reservation_page';
 
 test.describe('Test Suite 1', () => {
- test('Test Case 1', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  await loginPage.goto();
-  await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
+  let loginPage: LoginPage;
+  let reservationPage: ReservationPage;
+  test.beforeEach(async ({page}) => {
+    loginPage = new LoginPage(page);
+    reservationPage = new ReservationPage(page);
+    await loginPage.goto();
+    await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
+
+
+  })
+ test('Test Case 1 Login', async ({ page }) => {
+  // const loginPage = new LoginPage(page);
+  // await loginPage.goto();
+  // await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
   await expect(page).toHaveURL('http://localhost:3000/');  
   expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible;
   });
 
-  test('Test Case 2', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const reservationPage = new ReservationPage(page);
-    await loginPage.goto();
-    await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
+  test('Test Case 2 Reservation', async ({ page }) => {
+    // const loginPage = new LoginPage(page);
+    // const reservationPage = new ReservationPage(page);
+    // await loginPage.goto();
+    // await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
     await reservationPage.performView();
     expect(page.getByText('Reservations')).toBeVisible;
   
-    //apply following later:
+    //apply following for next TC:
     //await logoutPage.performLogout();
     //await expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
     });

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '.tests/pages/login_page';
+import { LoginPage } from './pages/login_page.ts'
 
 test.describe('Test Suite 1', () => {
  test('Test Case 1', async ({ page }) => {

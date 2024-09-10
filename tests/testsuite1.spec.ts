@@ -1,11 +1,11 @@
 import {test, expect} from '@playwright/test';
 import {LoginPage} from './pages/login_page';
-import {OverviewPage} from './pages/overview_page';
+import {LogoutPage} from './pages/logout_page';
 
 test.describe('Test Suite 1', () => {
  test('Test Case 1', async ({ page }) => {
   const loginPage = new LoginPage(page);
-  const overviewPage = new OverviewPage(page);
+  const overviewPage = new LogoutPage(page);
   await loginPage.goto();
   await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
   await expect(page).toHaveURL('http://localhost:3000/');  

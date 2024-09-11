@@ -21,7 +21,7 @@ test.describe('Test Suite 1', () => {
 
   test('Test Case 2 Reservation', async ({ page }) => {
     await reservationPage.performView();
-    expect(page.getByText('Reservations')).toBeVisible;
+    expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
   
     //apply following for Logout TC:
     //await logoutPage.performLogout();

@@ -22,11 +22,20 @@ test.describe('Test Suite 1', () => {
   test('Test Case 2 Reservation', async ({ page }) => {
     await reservationPage.performView();
     expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
-  
-    //apply following for Logout TC:
-    //await logoutPage.performLogout();
-    //await expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
-    });
+  });
+
+  test('Test Case 3 CreateReservation', async ({ page }) => {
+    await reservationPage.performView();
+    expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
+    await reservationPage.performCreateReservation();
+    expect(page.getByRole('link', { name: 'New Reservation' })).toBeVisible;
+
+  });
+
+    // test('Test Case ... Logout', async ({ page }) => {
+      //await logoutPage.performLogout();
+      //await expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
+  // });
 })
   
 /**

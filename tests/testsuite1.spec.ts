@@ -2,13 +2,18 @@ import {test, expect} from '@playwright/test';
 import {LoginPage} from './pages/login_page';
 import {LogoutPage} from './pages/logout_page';
 import { ReservationPage } from './pages/reservation_page';
+import { RoomsPage } from './pages/rooms_page';
 
 test.describe('Test Suite 1', () => {
   let loginPage: LoginPage;
   let reservationPage: ReservationPage;
+  let roomsPage: RoomsPage;
+  let logoutPage: LogoutPage;
+
   test.beforeEach(async ({page}) => {
     loginPage = new LoginPage(page);
     reservationPage = new ReservationPage(page);
+    roomsPage = new RoomsPage(page);
     await loginPage.goto();
     await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
 
@@ -26,6 +31,14 @@ test.describe('Test Suite 1', () => {
 
   test('Test Case 3 CreateReservation', async ({ page }) => {
     await reservationPage.performView();
+    expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
+    await reservationPage.performCreateReservation();
+    expect(page.getByRole('link', { name: 'New Reservation' })).toBeVisible;
+
+  });
+
+  test('Test Case 4 CreateRoom', async ({ page }) => {
+    await roomsPage.performView();
     expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
     await reservationPage.performCreateReservation();
     expect(page.getByRole('link', { name: 'New Reservation' })).toBeVisible;

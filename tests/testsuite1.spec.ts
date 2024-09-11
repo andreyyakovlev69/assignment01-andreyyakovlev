@@ -41,7 +41,7 @@ test.describe('Test Suite 1', () => {
     await roomsPage.performView();
     expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
     await reservationPage.performCreateReservation();
-    expect(page.getByRole('link', { name: 'New Reservation' })).toBeVisible;
+    expect(page.getByText('New Room')).toBeVisible;
 
   });
 

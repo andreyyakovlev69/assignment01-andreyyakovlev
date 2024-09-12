@@ -3,12 +3,17 @@ import {LoginPage} from './pages/login_page';
 import {LogoutPage} from './pages/logout_page';
 import { ReservationPage } from './pages/reservation_page';
 import { RoomsPage } from './pages/rooms_page';
+import { faker } from '@faker-js/faker';
 
 test.describe('Test Suite 1', () => {
   let loginPage: LoginPage;
   let reservationPage: ReservationPage;
   let roomsPage: RoomsPage;
   let logoutPage: LogoutPage;
+  // Generate random input data:
+  const randomDate = faker.date.future().toISOString().split('T')[0]; // YYYY-MM-DD format
+  const randomClient = faker.name.fullName();
+  const randomRoom = `Floor ${faker.datatype.number({ min: 1, max: 5 })}, Room ${faker.datatype.number({ min: 100, max: 500 })}`;
 
   test.beforeEach(async ({page}) => {
     loginPage = new LoginPage(page);

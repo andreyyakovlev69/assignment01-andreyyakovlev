@@ -56,9 +56,8 @@ test.describe('Test Suite 1', () => {
     expect(page.getByText('Welcome tester01!')).toBeVisible;
     });
 
-    test('Test Case 7 ReservationEdit', async ({ page }) => {
+    test('Test Case 7 ReservationEditMenu', async ({ page }) => {
       await reservationPage.performView();
-      //await reservationPage.performCreateReservation();
       expect(page.getByRole('img')).toBeVisible;
       await reservationPage.performEditReservationButton();
       await reservationPage.performEditReservationMenu();

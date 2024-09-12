@@ -71,6 +71,12 @@ test.describe('Test Suite 1', () => {
       expect(page.getByText('Bill')).toBeVisible;
       expect(page.getByRole('link', { name: 'Back' })).toBeVisible;
       expect(page.getByText('Delete')).toBeVisible;
+      expect(page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD')).toBeVisible;
+      expect(page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD')).toBeVisible;
+      expect(page.locator('div').filter({ hasText: /^Client- Not selected -Jonas Hellman \(#1\)Mikael Eriksson \(#2\)$/ }).getByRole('combobox')).toBeVisible;
+      expect(page.locator('div').filter({ hasText: /^Room- Not selected -Floor 1, Room 101Floor 1, Room 102$/ }).getByRole('combobox')).toBeVisible;
+      expect(page.locator('div').filter({ hasText: /^Bill- Not selected -ID: 1$/ }).getByRole('combobox')).toBeVisible;
+
     });
 })
   

@@ -14,9 +14,11 @@ test.describe('Test Suite 1', () => {
     loginPage = new LoginPage(page);
     reservationPage = new ReservationPage(page);
     roomsPage = new RoomsPage(page);
+    logoutPage = new LogoutPage(page);
+
+
     await loginPage.goto();
     await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
-
 
   })
  test('Test Case 1 Login', async ({ page }) => {
@@ -34,7 +36,6 @@ test.describe('Test Suite 1', () => {
     expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
     await reservationPage.performCreateReservation();
     expect(page.getByRole('link', { name: 'New Reservation' })).toBeVisible;
-
   });
 
   test('Test Case 4 CreateRoom', async ({ page }) => {
@@ -42,13 +43,13 @@ test.describe('Test Suite 1', () => {
     expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
     await reservationPage.performCreateReservation();
     expect(page.getByText('New Room')).toBeVisible;
-
   });
 
-    // test('Test Case ... Logout', async ({ page }) => {
-      //await logoutPage.performLogout();
-      //await expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
-  // });
+    test('Test Case 5 Logout', async ({ page }) => {
+      await expect(page).toHaveURL('http://localhost:3000/');
+      await logoutPage.performLogout();
+      expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
+  });
 })
   
 /**

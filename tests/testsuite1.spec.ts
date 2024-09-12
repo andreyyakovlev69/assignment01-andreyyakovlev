@@ -50,6 +50,11 @@ test.describe('Test Suite 1', () => {
       await logoutPage.performLogout();
       expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
   });
+
+  test('Test Case 6 Login_Welcome', async ({ page }) => {
+    await expect(page).toHaveURL('http://localhost:3000/');  
+    expect(page.getByText('Welcome tester01!')).toBeVisible;
+    });
 })
   
 /**

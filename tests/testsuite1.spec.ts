@@ -12,8 +12,8 @@ test.describe('Test Suite 1', () => {
   let logoutPage: LogoutPage;
   // Generate random input data:
   const randomDate = faker.date.future().toISOString().split('T')[0]; // YYYY-MM-DD format
-  const randomClient = faker.name.fullName();
-  const randomRoom = `Floor ${faker.datatype.number({ min: 1, max: 5 })}, Room ${faker.datatype.number({ min: 100, max: 500 })}`;
+  const randomClient = faker.person.fullName();
+  const randomRoom = `Floor ${faker.number.int({ min: 1, max: 5 })}, Room ${faker.number.int({ min: 100, max: 500 })}`;
 
   test.beforeEach(async ({page}) => {
     loginPage = new LoginPage(page);
@@ -61,39 +61,66 @@ test.describe('Test Suite 1', () => {
     expect(page.getByText('Welcome tester01!')).toBeVisible;
     });
 
-    test('Test Case 7 ReservationEditMenu', async ({ page }) => {
-      await reservationPage.performView();
-      expect(page.getByRole('img')).toBeVisible;
-      await reservationPage.performEditReservationButton();
-      await reservationPage.performEditReservationMenu();
-      expect(page.getByText('Save')).toBeVisible;
-      expect(page.getByText('ID', { exact: true })).toBeVisible;
-      expect(page.getByText('Created')).toBeVisible;
-      expect(page.getByText('Start (Format YYYY-MM-DD)')).toBeVisible;
-      expect(page.getByText('End (Format YYYY-MM-DD)')).toBeVisible;
-      expect(page.getByText('Client')).toBeVisible;
-      expect(page.getByText('Room', { exact: true })).toBeVisible;
-      expect(page.getByText('Bill')).toBeVisible;
-      expect(page.getByRole('link', { name: 'Back' })).toBeVisible;
-      expect(page.getByText('Delete')).toBeVisible;
-      expect(page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD')).toBeVisible;
-      expect(page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD')).toBeVisible;
-      expect(page.locator('div').filter({ hasText: /^Client- Not selected -Jonas Hellman \(#1\)Mikael Eriksson \(#2\)$/ }).getByRole('combobox')).toBeVisible;
-      expect(page.locator('div').filter({ hasText: /^Room- Not selected -Floor 1, Room 101Floor 1, Room 102$/ }).getByRole('combobox')).toBeVisible;
-      expect(page.locator('div').filter({ hasText: /^Bill- Not selected -ID: 1$/ }).getByRole('combobox')).toBeVisible;
+  test('Test Case 7 ReservationEditMenu', async ({ page }) => {
+    await reservationPage.performView();
+    expect(page.getByRole('img')).toBeVisible;
+    await reservationPage.performEditReservationButton();
+    await reservationPage.performEditReservationMenu();
+    // Interact with the input fields first:
+    const startDateInput = page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
+    const endDateInput = page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
+    // Fill the input fields with randomized dates
+    await startDateInput.fill(randomDate);
+    await endDateInput.fill(randomDate);
+    //assert:
+    expect(startDateInput).toBeVisible();
+    expect(endDateInput).toBeVisible();
 
-    });
+    expect(page.getByText('Save')).toBeVisible;
+    expect(page.getByText('ID', { exact: true })).toBeVisible;
+    expect(page.getByText('Created')).toBeVisible;
+    expect(page.getByText('Start (Format YYYY-MM-DD)')).toBeVisible;
+    expect(page.getByText('End (Format YYYY-MM-DD)')).toBeVisible;
+    expect(page.getByText('Client')).toBeVisible;
+    expect(page.getByText('Room', { exact: true })).toBeVisible;
+    expect(page.getByText('Bill')).toBeVisible;
+    expect(page.getByRole('link', { name: 'Back' })).toBeVisible;
+    expect(page.getByText('Delete')).toBeVisible;
+    //expect(page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD')).toBeVisible;
+    //expect(page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD')).toBeVisible;
+    //expect(page.locator('div').filter({ hasText: /^Client- Not selected -Jonas Hellman \(#1\)Mikael Eriksson \(#2\)$/ }).getByRole('combobox')).toBeVisible;
+    
+    //fixar följande coden under med CSS locator:
+    //const clientCombobox = page.locator('div').filter({ hasText: new RegExp(`^Client.*${randomClient}`) }).getByRole('combobox');
+    // const clientCombobox = page.locator('#app > div > div:nth-child(2) > div:nth-child(5) > select').filter({ hasText: new RegExp(`^Client.*${randomClient}`) }).getByRole('combobox');
+    // expect(clientCombobox).toBeVisible();
+
+    
+    // tillfälig commenterar bort Room delen:
+    const roomCombobox = page.locator('div').filter({ hasText: new RegExp(`^Room.*${randomRoom}`) }).getByRole('combobox');
+    expect(roomCombobox).toBeVisible();
+
+
+    expect(page.locator('div').filter({ hasText: /^Room- Not selected -Floor 1, Room 101Floor 1, Room 102$/ }).getByRole('combobox')).toBeVisible;
+    expect(page.locator('div').filter({ hasText: /^Bill- Not selected -ID: 1$/ }).getByRole('combobox')).toBeVisible;
+  });
+
+  test('Test Case 8 ReservationCreateNew', async ({ page }) => {
+    await reservationPage.performView();
+    expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
+    await reservationPage.performCreateReservation();
+    expect(page.getByRole('link', { name: 'New Reservation' })).toBeVisible;
+
+
+    // Interact with the input fields first:
+    const startDateInput = page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
+    const endDateInput = page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
+    // Fill the input fields with randomized dates
+    await startDateInput.fill(randomDate);
+    await endDateInput.fill(randomDate);
+    //assert:
+    expect(startDateInput).toBeVisible();
+    expect(endDateInput).toBeVisible();
+  });
+
 })
-  
-/**
-  //login & assertions:
-  await page.goto(`${process.env.BASE_URL}`);
-  await expect(page.getByRole('link', { name: 'Tester Hotel' })).toBeVisible(); //assertion
-  await page.locator('input[type="text"]').fill(`${process.env.TEST_USERNAME}`);
-  await page.locator('input[type="password"]').fill(`${process.env.TEST_PASSWORD}`);
-  await page.getByRole('button', { name: 'Login' }).click();
-  await expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible();
-  // logout:
-  await page.getByRole('button', { name: 'Logout' }).click();
-  expect(page.url()).toBe('http://localhost:3000/login');
-  await expect(page.getByRole('link', { name: 'Tester Hotel' })).toBeVisible();*/

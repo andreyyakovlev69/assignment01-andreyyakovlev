@@ -62,7 +62,15 @@ test.describe('Test Suite 1', () => {
       await reservationPage.performEditReservationButton();
       await reservationPage.performEditReservationMenu();
       expect(page.getByText('Save')).toBeVisible;
-
+      expect(page.getByText('ID', { exact: true })).toBeVisible;
+      expect(page.getByText('Created')).toBeVisible;
+      expect(page.getByText('Start (Format YYYY-MM-DD)')).toBeVisible;
+      expect(page.getByText('End (Format YYYY-MM-DD)')).toBeVisible;
+      expect(page.getByText('Client')).toBeVisible;
+      expect(page.getByText('Room', { exact: true })).toBeVisible;
+      expect(page.getByText('Bill')).toBeVisible;
+      expect(page.getByRole('link', { name: 'Back' })).toBeVisible;
+      expect(page.getByText('Delete')).toBeVisible;
     });
 })
   

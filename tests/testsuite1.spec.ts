@@ -31,14 +31,14 @@ test.describe('Test Suite 1', () => {
     expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
   });
 
-  test('Test Case 3 CreateReservation', async ({ page }) => {
+  test('Test Case 3 ReservationCreate', async ({ page }) => {
     await reservationPage.performView();
     expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
     await reservationPage.performCreateReservation();
     expect(page.getByRole('link', { name: 'New Reservation' })).toBeVisible;
   });
 
-  test('Test Case 4 CreateRoom', async ({ page }) => {
+  test('Test Case 4 RoomCreate', async ({ page }) => {
     await roomsPage.performView();
     expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
     await reservationPage.performCreateReservation();
@@ -51,9 +51,19 @@ test.describe('Test Suite 1', () => {
       expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
   });
 
-  test('Test Case 6 Login_Welcome', async ({ page }) => {
+  test('Test Case 6 LoginWelcome', async ({ page }) => {
     await expect(page).toHaveURL('http://localhost:3000/');  
     expect(page.getByText('Welcome tester01!')).toBeVisible;
+    });
+
+    test('Test Case 7 ReservationEdit', async ({ page }) => {
+      await reservationPage.performView();
+      //await reservationPage.performCreateReservation();
+      expect(page.getByRole('img')).toBeVisible;
+      await reservationPage.performEditReservationButton();
+      await reservationPage.performEditReservationMenu();
+      expect(page.getByText('Save')).toBeVisible;
+
     });
 })
   

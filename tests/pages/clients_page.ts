@@ -17,5 +17,8 @@ export class ClientsPage {
   };
   async performCreateClientButton() {
     await this.createClientButton.click();
-  }
+  };
+  async performSaveClientButton() {
+    await this.createClientButton.click();
+  };
 }

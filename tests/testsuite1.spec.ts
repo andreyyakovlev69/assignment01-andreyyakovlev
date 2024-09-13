@@ -16,7 +16,8 @@ test.describe('Test Suite 1', () => {
   const randomStartDate = faker.date.soon().toISOString().split('T')[0]; // YYYY-MM-DD format
   const randomEndDate = faker.date.soon().toISOString().split('T')[0];
   const randomClient = faker.person.fullName();
-  const randomRoom = `Floor ${faker.number.int({ min: 1, max: 5 })}, Room ${faker.number.int({ min: 100, max: 500 })}`;
+  const randomEmail = faker.internet.email();
+  const randomPhone = faker.phone.number();
 
   test.beforeEach(async ({page}) => {
     loginPage = new LoginPage(page);
@@ -115,6 +116,18 @@ test.describe('Test Suite 1', () => {
 
     const clientInput = page.locator('div').filter({ hasText: /^Name$/ }).getByRole('textbox');
     await clientInput.fill(randomClient);
+    expect (clientInput).toBeVisible;
+
+    const emailInput = page.locator('input[type="email"]');
+    await emailInput.fill(randomEmail);
+    expect(emailInput).toBeVisible;
+
+    const phoneInput = page.locator('div').filter({ hasText: /^Telephone$/ }).getByRole('textbox');
+    await phoneInput.fill(randomPhone);
+    expect(phoneInput).toBeVisible;
+
+    await clientsPage.performSaveClientButton();
+    //#app > div > div.clients > div:nth-child(3) > div:nth-child(2) > h3
   });
 
 })

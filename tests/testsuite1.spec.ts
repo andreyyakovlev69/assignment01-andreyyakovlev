@@ -90,14 +90,10 @@ test.describe('Test Suite 1', () => {
     await reservationPage.performCreateReservation();
     expect(page.getByRole('link', { name: 'New Reservation' })).toBeVisible;
 
-
-    // Interact with the input fields first:
     const startDateInput = page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
     const endDateInput = page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
-    await startDateInput.waitFor({ state: 'visible' }); // Explicit wait
-    await endDateInput.waitFor({ state: 'visible' }); // Explicit wait
-
-    await startDateInput.fill(randomStartDate); // Fill the input fields with randomized dates
+    
+    await startDateInput.fill(randomStartDate);
     await endDateInput.fill(randomEndDate);
     expect(startDateInput).toBeVisible();
     expect(endDateInput).toBeVisible();

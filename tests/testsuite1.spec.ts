@@ -127,7 +127,11 @@ test.describe('Test Suite 1', () => {
     expect(phoneInput).toBeVisible;
 
     await clientsPage.performSaveClientButton();
-    //#app > div > div.clients > div:nth-child(3) > div:nth-child(2) > h3
+
+    const clientInList = page.locator('div.clients h3').filter({ hasText: randomClient });
+    await clientInList.waitFor({ state: 'visible' });
+    await expect(clientInList).toBeVisible();
+  
   });
 
 })

@@ -3,6 +3,7 @@ import {LoginPage} from './pages/login_page';
 import {LogoutPage} from './pages/logout_page';
 import { ReservationPage } from './pages/reservation_page';
 import { RoomsPage } from './pages/rooms_page';
+import { ClientsPage } from './pages/clients_page';
 import { faker } from '@faker-js/faker';
 
 test.describe('Test Suite 1', () => {
@@ -10,6 +11,7 @@ test.describe('Test Suite 1', () => {
   let reservationPage: ReservationPage;
   let roomsPage: RoomsPage;
   let logoutPage: LogoutPage;
+  let clientsPage: ClientsPage;
   // Generate random input data:
   const randomStartDate = faker.date.soon().toISOString().split('T')[0]; // YYYY-MM-DD format
   const randomEndDate = faker.date.soon().toISOString().split('T')[0];
@@ -21,6 +23,7 @@ test.describe('Test Suite 1', () => {
     reservationPage = new ReservationPage(page);
     roomsPage = new RoomsPage(page);
     logoutPage = new LogoutPage(page);
+    clientsPage = new ClientsPage(page);
 
 
     await loginPage.goto();
@@ -97,6 +100,21 @@ test.describe('Test Suite 1', () => {
     await endDateInput.fill(randomEndDate);
     expect(startDateInput).toBeVisible();
     expect(endDateInput).toBeVisible();
+  });
+
+  test('Test Case 9 Clients', async ({ page }) => {
+    await clientsPage.performView();
+    expect(page.getByRole('link', { name: 'Create Client' })).toBeVisible;
+    await clientsPage.performCreateClientButton();
+    expect(page.getByText('New Client')).toBeVisible;
+  });
+
+  test('Test Case 10 Clients Create New', async ({ page }) => {
+    await clientsPage.performView();
+    await clientsPage.performCreateClientButton();
+
+    const clientInput = page.locator('div').filter({ hasText: /^Name$/ }).getByRole('textbox');
+    await clientInput.fill(randomClient);
   });
 
 })

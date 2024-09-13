@@ -11,7 +11,8 @@ test.describe('Test Suite 1', () => {
   let roomsPage: RoomsPage;
   let logoutPage: LogoutPage;
   // Generate random input data:
-  const randomDate = faker.date.future().toISOString().split('T')[0]; // YYYY-MM-DD format
+  const randomStartDate = faker.date.soon().toISOString().split('T')[0]; // YYYY-MM-DD format
+  const randomEndDate = faker.date.soon().toISOString().split('T')[0];
   const randomClient = faker.person.fullName();
   const randomRoom = `Floor ${faker.number.int({ min: 1, max: 5 })}, Room ${faker.number.int({ min: 100, max: 500 })}`;
 
@@ -66,16 +67,6 @@ test.describe('Test Suite 1', () => {
     expect(page.getByRole('img')).toBeVisible;
     await reservationPage.performEditReservationButton();
     await reservationPage.performEditReservationMenu();
-    // Interact with the input fields first:
-    const startDateInput = page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
-    const endDateInput = page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
-    // Fill the input fields with randomized dates
-    await startDateInput.fill(randomDate);
-    await endDateInput.fill(randomDate);
-    //assert:
-    expect(startDateInput).toBeVisible();
-    expect(endDateInput).toBeVisible();
-
     expect(page.getByText('Save')).toBeVisible;
     expect(page.getByText('ID', { exact: true })).toBeVisible;
     expect(page.getByText('Created')).toBeVisible;
@@ -86,21 +77,9 @@ test.describe('Test Suite 1', () => {
     expect(page.getByText('Bill')).toBeVisible;
     expect(page.getByRole('link', { name: 'Back' })).toBeVisible;
     expect(page.getByText('Delete')).toBeVisible;
-    //expect(page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD')).toBeVisible;
-    //expect(page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD')).toBeVisible;
-    //expect(page.locator('div').filter({ hasText: /^Client- Not selected -Jonas Hellman \(#1\)Mikael Eriksson \(#2\)$/ }).getByRole('combobox')).toBeVisible;
-    
-    //fixar följande coden under med CSS locator:
-    //const clientCombobox = page.locator('div').filter({ hasText: new RegExp(`^Client.*${randomClient}`) }).getByRole('combobox');
-    // const clientCombobox = page.locator('#app > div > div:nth-child(2) > div:nth-child(5) > select').filter({ hasText: new RegExp(`^Client.*${randomClient}`) }).getByRole('combobox');
-    // expect(clientCombobox).toBeVisible();
-
-    
-    // tillfälig commenterar bort Room delen:
-    const roomCombobox = page.locator('div').filter({ hasText: new RegExp(`^Room.*${randomRoom}`) }).getByRole('combobox');
-    expect(roomCombobox).toBeVisible();
-
-
+    expect(page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD')).toBeVisible;
+    expect(page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD')).toBeVisible;
+    expect(page.locator('div').filter({ hasText: /^Client- Not selected -Jonas Hellman \(#1\)Mikael Eriksson \(#2\)$/ }).getByRole('combobox')).toBeVisible;
     expect(page.locator('div').filter({ hasText: /^Room- Not selected -Floor 1, Room 101Floor 1, Room 102$/ }).getByRole('combobox')).toBeVisible;
     expect(page.locator('div').filter({ hasText: /^Bill- Not selected -ID: 1$/ }).getByRole('combobox')).toBeVisible;
   });
@@ -115,10 +94,11 @@ test.describe('Test Suite 1', () => {
     // Interact with the input fields first:
     const startDateInput = page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
     const endDateInput = page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
-    // Fill the input fields with randomized dates
-    await startDateInput.fill(randomDate);
-    await endDateInput.fill(randomDate);
-    //assert:
+    await startDateInput.waitFor({ state: 'visible' }); // Explicit wait
+    await endDateInput.waitFor({ state: 'visible' }); // Explicit wait
+
+    await startDateInput.fill(randomStartDate); // Fill the input fields with randomized dates
+    await endDateInput.fill(randomEndDate);
     expect(startDateInput).toBeVisible();
     expect(endDateInput).toBeVisible();
   });

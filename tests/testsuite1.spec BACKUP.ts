@@ -102,37 +102,35 @@ test.describe('Test Suite 1', () => {
     expect(endDateInput).toBeVisible();
   });
 
-  test('Test Case 9 View Clients', async ({ page }) => {
+  test('Test Case 9 Clients', async ({ page }) => {
     await viewClientsPage.performView();
-    await expect(page).toHaveURL('http://localhost:3000/clients');  
     expect(page.getByRole('link', { name: 'Create Client' })).toBeVisible;
-    expect(page.getByText('Clients')).toBeVisible;
-    expect(page.getByRole('link', { name: 'Back' })).toBeVisible;
-    expect(page.getByRole('button', { name: 'Logout' })).toBeVisible;
+    await clientsPage.performCreateClientButton();
+    expect(page.getByText('New Client')).toBeVisible;
   });
 
-  // test('Test Case 10 Clients Create New', async ({ page }) => {
-  //   await clientsPage.performView();
-  //   await clientsPage.performCreateClientButton();
+  test('Test Case 10 Clients Create New', async ({ page }) => {
+    await viewClientsPage.performView();
+    await viewClientsPage.performCreateClientButton();
 
-  //   const clientInput = page.locator('div').filter({ hasText: /^Name$/ }).getByRole('textbox');
-  //   await clientInput.fill(randomClient);
-  //   expect (clientInput).toBeVisible;
+    const clientInput = page.locator('div').filter({ hasText: /^Name$/ }).getByRole('textbox');
+    await clientInput.fill(randomClient);
+    expect (clientInput).toBeVisible;
 
-  //   const emailInput = page.locator('input[type="email"]');
-  //   await emailInput.fill(randomEmail);
-  //   expect(emailInput).toBeVisible;
+    const emailInput = page.locator('input[type="email"]');
+    await emailInput.fill(randomEmail);
+    expect(emailInput).toBeVisible;
 
-  //   const phoneInput = page.locator('div').filter({ hasText: /^Telephone$/ }).getByRole('textbox');
-  //   await phoneInput.fill(randomPhone);
-  //   expect(phoneInput).toBeVisible;
+    const phoneInput = page.locator('div').filter({ hasText: /^Telephone$/ }).getByRole('textbox');
+    await phoneInput.fill(randomPhone);
+    expect(phoneInput).toBeVisible;
 
-  //   await clientsPage.performSaveClientButton();
+    await clientsPage.performSaveClientButton();
 
-  //   const clientInList = page.locator('div.clients h3').filter({ hasText: randomClient });
-  //   await clientInList.waitFor({ state: 'visible' });
-  //   await expect(clientInList).toBeVisible();
+    const clientInList = page.locator('div.clients h3').filter({ hasText: randomClient });
+    await clientInList.waitFor({ state: 'visible' });
+    await expect(clientInList).toBeVisible();
   
-  // });
+  });
 
 })

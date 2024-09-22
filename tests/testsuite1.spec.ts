@@ -5,6 +5,7 @@ import { ReservationPage } from './pages/reservation_page';
 import { RoomsPage } from './pages/rooms_page';
 import { ViewClientsPage } from './pages/view_clients_page';
 import { CreateClientsPage } from './pages/create_clients_page';
+import { EditClientsPage } from './pages/edit_clients_page';
 import { faker } from '@faker-js/faker';
 
 test.describe('Test Suite 1', () => {
@@ -14,6 +15,7 @@ test.describe('Test Suite 1', () => {
   let logoutPage: LogoutPage;
   let viewClientsPage: ViewClientsPage;
   let createClientsPage: CreateClientsPage;
+  let editClientsPage: EditClientsPage;
 
   // Generate random input data:
   const randomStartDate = faker.date.soon().toISOString().split('T')[0];
@@ -29,6 +31,7 @@ test.describe('Test Suite 1', () => {
     logoutPage = new LogoutPage(page);
     viewClientsPage = new ViewClientsPage(page);
     createClientsPage = new CreateClientsPage(page);
+    editClientsPage = new EditClientsPage(page);
 
     await loginPage.goto();
     await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
@@ -144,6 +147,24 @@ test.describe('Test Suite 1', () => {
     await clientInList.waitFor({ state: 'visible' });
     await expect(clientInList).toBeVisible();
   
+  });
+
+  test('Test Case 11 Edit Clients', async ({ page }) => {
+    await editClientsPage.performView();
+    await expect(page).toHaveURL('http://localhost:3000/clients');  
+    expect(page.getByText('Clients')).toBeVisible;
+    
+    await editClientsPage.performClientMenuButton();
+    // expect(page.getByText('Clients')).toBeVisible;
+    // expect(page.getByRole('link', { name: 'Back' })).toBeVisible;
+    // expect(page.getByRole('button', { name: 'Logout' })).toBeVisible;
+
+    // await viewClientsPage.performBackButton();
+    // await expect(page).toHaveURL('http://localhost:3000');
+
+    // await viewClientsPage.performView();
+    // await viewClientsPage.performLogoutButton();
+    // await expect(page).toHaveURL(`${process.env.BASE_URL}`);
   });
 
 })

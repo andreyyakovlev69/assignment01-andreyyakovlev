@@ -48,7 +48,6 @@ export class CreateClientsPage {
   async performSaveButton() {
     await this.saveButton.click();
   };
-  // Method to perform a click action on the 'Save Client' button:
   async performBackButton() {
     await this.backButton.click();
   };

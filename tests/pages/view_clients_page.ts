@@ -23,16 +23,11 @@ export class ViewClientsPage {
   }
 
   //Methods:
-  // async goto() {
-  //   await this.page.goto('http://localhost:3000/clients');
-  // }
   // Method to perform a click action on the 'View' button:
   async performView() {
     await this.viewButton.click();
   };
-  async performLogout() {
-    await this.logoutButton.click();
-  };
+
   // Method to perform a click action on the 'Create Client' button:
   async performCreateClientButton() {
     await this.createClientButton.click();

@@ -4,6 +4,7 @@ import {LogoutPage} from './pages/logout_page';
 import { ReservationPage } from './pages/reservation_page';
 import { RoomsPage } from './pages/rooms_page';
 import { ViewClientsPage } from './pages/view_clients_page';
+import { CreateClientsPage } from './pages/create_clients_page';
 import { faker } from '@faker-js/faker';
 
 test.describe('Test Suite 1', () => {
@@ -12,6 +13,8 @@ test.describe('Test Suite 1', () => {
   let roomsPage: RoomsPage;
   let logoutPage: LogoutPage;
   let viewClientsPage: ViewClientsPage;
+  let createClientsPage: CreateClientsPage;
+
   // Generate random input data:
   const randomStartDate = faker.date.soon().toISOString().split('T')[0];
   const randomEndDate = faker.date.soon().toISOString().split('T')[0];
@@ -25,6 +28,7 @@ test.describe('Test Suite 1', () => {
     roomsPage = new RoomsPage(page);
     logoutPage = new LogoutPage(page);
     viewClientsPage = new ViewClientsPage(page);
+    createClientsPage = new CreateClientsPage(page);
 
     await loginPage.goto();
     await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
@@ -109,30 +113,37 @@ test.describe('Test Suite 1', () => {
     expect(page.getByText('Clients')).toBeVisible;
     expect(page.getByRole('link', { name: 'Back' })).toBeVisible;
     expect(page.getByRole('button', { name: 'Logout' })).toBeVisible;
+
+    await viewClientsPage.performBackButton();
+    await expect(page).toHaveURL('http://localhost:3000');
+
+    await viewClientsPage.performView();
+    await viewClientsPage.performLogoutButton();
+    await expect(page).toHaveURL(`${process.env.BASE_URL}`);
   });
 
-  // test('Test Case 10 Clients Create New', async ({ page }) => {
-  //   await clientsPage.performView();
-  //   await clientsPage.performCreateClientButton();
+  test('Test Case 10 Clients Create New', async ({ page }) => {
+    await createClientsPage.performView();
+    await createClientsPage.performCreateClientButton();
 
-  //   const clientInput = page.locator('div').filter({ hasText: /^Name$/ }).getByRole('textbox');
-  //   await clientInput.fill(randomClient);
-  //   expect (clientInput).toBeVisible;
+    const clientInput = page.locator('div').filter({ hasText: /^Name$/ }).getByRole('textbox');
+    await clientInput.fill(randomClient);
+    expect (clientInput).toBeVisible;
 
-  //   const emailInput = page.locator('input[type="email"]');
-  //   await emailInput.fill(randomEmail);
-  //   expect(emailInput).toBeVisible;
+    const emailInput = page.locator('input[type="email"]');
+    await emailInput.fill(randomEmail);
+    expect(emailInput).toBeVisible;
 
-  //   const phoneInput = page.locator('div').filter({ hasText: /^Telephone$/ }).getByRole('textbox');
-  //   await phoneInput.fill(randomPhone);
-  //   expect(phoneInput).toBeVisible;
+    const phoneInput = page.locator('div').filter({ hasText: /^Telephone$/ }).getByRole('textbox');
+    await phoneInput.fill(randomPhone);
+    expect(phoneInput).toBeVisible;
 
-  //   await clientsPage.performSaveClientButton();
+    await createClientsPage.performSaveButton();
 
-  //   const clientInList = page.locator('div.clients h3').filter({ hasText: randomClient });
-  //   await clientInList.waitFor({ state: 'visible' });
-  //   await expect(clientInList).toBeVisible();
+    const clientInList = page.locator('div.clients h3').filter({ hasText: randomClient });
+    await clientInList.waitFor({ state: 'visible' });
+    await expect(clientInList).toBeVisible();
   
-  // });
+  });
 
 })

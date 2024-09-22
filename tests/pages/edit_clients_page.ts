@@ -11,9 +11,6 @@ export class EditClientsPage {
   readonly editButton: Locator;
   readonly logoutButton: Locator;
   readonly backButton: Locator;
-  // readonly nameField: Locator;
-  // readonly emailField: Locator;
-  // readonly telephoneField: Locator;
 
   // Constructor to initialize the class with a page instance and define locators for the elements:
   constructor(page: Page) {
@@ -24,15 +21,9 @@ export class EditClientsPage {
     this.clientsHeader = page.locator('#app > div > h2 > div');
     this.clientMenuButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.action > img');
     this.editButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.menu > a:nth-child(1)');
-
-    // this.nameField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=text]');
-    // this.emailField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=email]');
-    // this.telephoneField = page.locator('#app > div > div:nth-child(2) > div:nth-child(3) > input[type=text]');
     this.logoutButton = page.locator('#app > header > div > div > button');
-    //this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
     this.backButton = page.locator('#app > div > div.actions > a:nth-child(1)')
   }
-
   //Methods:
   // Method to perform a click action on the 'View' button:
   async performView() {
@@ -43,11 +34,10 @@ export class EditClientsPage {
     await this.clientMenuButton.click();
   };
 
-  // Method to perform a click action on the '...' button:
+  // Method to perform a click action on the '...' buttons:
   async performEditButton() {
     await this.editButton.click();
   };
-  // Method to perform a click action on the 'Save Client' button:
   async performBackButton() {
     await this.backButton.click();
   };

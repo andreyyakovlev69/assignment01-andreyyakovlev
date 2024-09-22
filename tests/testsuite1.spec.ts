@@ -155,16 +155,11 @@ test.describe('Test Suite 1', () => {
     expect(page.getByText('Clients')).toBeVisible;
     
     await editClientsPage.performClientMenuButton();
-    // expect(page.getByText('Clients')).toBeVisible;
-    // expect(page.getByRole('link', { name: 'Back' })).toBeVisible;
-    // expect(page.getByRole('button', { name: 'Logout' })).toBeVisible;
-
-    // await viewClientsPage.performBackButton();
-    // await expect(page).toHaveURL('http://localhost:3000');
-
-    // await viewClientsPage.performView();
-    // await viewClientsPage.performLogoutButton();
-    // await expect(page).toHaveURL(`${process.env.BASE_URL}`);
+    await editClientsPage.performEditButton();
+    expect(page.getByText('ID')).toBeVisible;
+    expect(page.getByText('Created')).toBeVisible;
+    expect(page.getByText('Save')).toBeVisible;
+    expect(page.getByText('Delete')).toBeVisible;
   });
 
 })

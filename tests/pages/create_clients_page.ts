@@ -12,7 +12,7 @@ export class CreateClientsPage {
   readonly backButton: Locator;
   readonly nameField: Locator;
   readonly emailField: Locator;
-  readonly telephoneField: Locator;
+  readonly phoneField: Locator;
 
   // Constructor to initialize the class with a page instance and define locators for the elements:
   constructor(page: Page) {
@@ -23,7 +23,7 @@ export class CreateClientsPage {
     this.createClientButton = page.locator('#app > div > h2 > a');
     this.nameField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=text]');
     this.emailField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=email]');
-    this.telephoneField = page.locator('#app > div > div:nth-child(2) > div:nth-child(3) > input[type=text]');
+    this.phoneField = page.locator('#app > div > div:nth-child(2) > div:nth-child(3) > input[type=text]');
     this.logoutButton = page.locator('#app > header > div > div > button');
     this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
     this.backButton = page.locator('#app > div > div.actions > a:nth-child(1)')
@@ -42,6 +42,16 @@ export class CreateClientsPage {
   // Method to fill the 'Name' field with a given value:
   async fillNameField(randomClient: string) {
     await this.nameField.fill(randomClient);
+  };
+
+  // Method to fill the 'email' field with a given value:
+  async fillEmailField(randomEmail: string) {
+    await this.emailField.fill(randomEmail);
+  };
+
+  // Method to fill the 'telephone' field with a given value:
+  async fillTelephoneField(randomPhone: string) {
+    await this.phoneField.fill(randomPhone);
   };
 
   // Method to perform a click action on the '...' button:

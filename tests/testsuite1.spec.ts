@@ -25,6 +25,8 @@ test.describe('Test Suite 1', () => {
   const randomClient = faker.person.fullName();
   const randomEmail = faker.internet.email();
   const randomPhone = faker.phone.number();
+  const randomNumber = faker.number.int({ min: 1,max: 500});
+  const randomFloor = faker.number.int({ min: 1,max: 5});
 
   test.beforeEach(async ({page}) => {
     loginPage = new LoginPage(page);

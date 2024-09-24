@@ -6,10 +6,10 @@ export class RoomsNewRoomPage {
   readonly logoutButton: Locator;
   readonly saveButton: Locator;
   readonly backButton: Locator;
-  readonly categoryField: Locator;
+  readonly categoryDoubleField: Locator;
   readonly numberField: Locator;
   readonly floorField: Locator;
-  readonly availableField: Locator;
+  readonly availableCheckbox: Locator;
   readonly priceField: Locator;
   readonly featuresField: Locator;
 
@@ -19,10 +19,10 @@ export class RoomsNewRoomPage {
     this.logoutButton = page.locator('#app > header > div > div > button');
     this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
     this.backButton = page.locator('#app > div > div.actions > a:nth-child(1)');
-    this.categoryField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > select');
+    this.categoryDoubleField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > select > option:nth-child(1)');
     this.numberField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=number]');
     this.floorField = page.locator('#app > div > div:nth-child(2) > div:nth-child(3) > input[type=number]');
-    this.availableField = page.locator('#app > div > div:nth-child(2) > div:nth-child(4) > div');
+    this.availableCheckbox = page.locator('#app > div > div:nth-child(2) > div:nth-child(4) > div');
     this.priceField = page.locator('#app > div > div:nth-child(2) > div:nth-child(5) > input[type=number]');
     this.featuresField = page.locator('#app > div > div:nth-child(2) > div:nth-child(6) > select');
   }
@@ -40,7 +40,18 @@ export class RoomsNewRoomPage {
   async performBackButton() {
     await this.backButton.click();
   };
-  // async fillCategoryField(randomEmail: string) {
-  //   await this.categoryField.fill(randomEmail);
-  // };
+  async fillCategoryDoubleField() {
+    await this.categoryDoubleField.click();
+  };
+  // Method to fill the 'Number' field with a random value:
+  async fillNumberField(randomNumber: string) {
+    await this.numberField.fill(randomNumber);
+  };
+  // Method to fill the 'floor' field with a random value:
+  async fillFloorField(randomFloor: string) {
+    await this.floorField.fill(randomFloor);
+  };
+  async performAvailableCheckbox() {
+    await this.availableCheckbox.click();
+  };
 }

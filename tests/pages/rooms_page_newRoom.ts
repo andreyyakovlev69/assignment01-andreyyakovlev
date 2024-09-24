@@ -11,7 +11,7 @@ export class RoomsNewRoomPage {
   readonly floorField: Locator;
   readonly availableCheckbox: Locator;
   readonly priceField: Locator;
-  readonly featuresField: Locator;
+  readonly featuresBalconyField: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -24,7 +24,7 @@ export class RoomsNewRoomPage {
     this.floorField = page.locator('#app > div > div:nth-child(2) > div:nth-child(3) > input[type=number]');
     this.availableCheckbox = page.locator('#app > div > div:nth-child(2) > div:nth-child(4) > div');
     this.priceField = page.locator('#app > div > div:nth-child(2) > div:nth-child(5) > input[type=number]');
-    this.featuresField = page.locator('#app > div > div:nth-child(2) > div:nth-child(6) > select');
+    this.featuresBalconyField = page.locator('#app > div > div:nth-child(2) > div:nth-child(6) > select');
   }
 
   //Methods:
@@ -33,9 +33,6 @@ export class RoomsNewRoomPage {
   };
   async performLogoutButton() {
     await this.logoutButton.click();
-  };
-  async performSaveButton() {
-    await this.saveButton.click();
   };
   async performBackButton() {
     await this.backButton.click();
@@ -51,7 +48,19 @@ export class RoomsNewRoomPage {
   async fillFloorField(randomFloor: string) {
     await this.floorField.fill(randomFloor);
   };
+  // Method to check the 'Available' checkbox:
   async performAvailableCheckbox() {
     await this.availableCheckbox.click();
+  };
+  // Method to fill the 'Price' field with a random value:
+  async fillPriceField(randomPrice: string) {
+    await this.priceField.fill(randomPrice);
+  };
+  // Method to choose room with balcony in 'Features' field:
+  async performfeaturesBalconyField() {
+    await this.featuresBalconyField.click();
+  };
+  async performSaveButton() {
+    await this.saveButton.click();
   };
 }

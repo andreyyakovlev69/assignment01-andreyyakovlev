@@ -2,16 +2,19 @@ import {test, expect} from '@playwright/test';
 import {LoginPage} from './pages/login_page';
 import {LogoutPage} from './pages/logout_page';
 import { ReservationPage } from './pages/reservation_page';
+import { NewReservationPage } from './pages/reservation_newReservation_page';
 import { RoomsPage } from './pages/rooms_page';
 import { RoomsNewRoomPage } from './pages/rooms_page_newRoom';
 import { ViewClientsPage } from './pages/view_clients_page';
 import { CreateClientsPage } from './pages/create_clients_page';
 import { EditClientsPage } from './pages/edit_clients_page';
+
 import { faker } from '@faker-js/faker';
 
 test.describe('Test Suite 1', () => {
   let loginPage: LoginPage;
   let reservationPage: ReservationPage;
+  let newReservationPage: NewReservationPage;
   let roomsPage: RoomsPage;
   let roomsNewRoomPage: RoomsNewRoomPage;
   let logoutPage: LogoutPage;

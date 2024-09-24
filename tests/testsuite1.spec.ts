@@ -3,6 +3,7 @@ import {LoginPage} from './pages/login_page';
 import {LogoutPage} from './pages/logout_page';
 import { ReservationPage } from './pages/reservation_page';
 import { RoomsPage } from './pages/rooms_page';
+import { RoomsNewRoomPage } from './pages/rooms_page_newRoom';
 import { ViewClientsPage } from './pages/view_clients_page';
 import { CreateClientsPage } from './pages/create_clients_page';
 import { EditClientsPage } from './pages/edit_clients_page';
@@ -12,6 +13,7 @@ test.describe('Test Suite 1', () => {
   let loginPage: LoginPage;
   let reservationPage: ReservationPage;
   let roomsPage: RoomsPage;
+  let roomsNewPage: RoomsNewRoomPage;
   let logoutPage: LogoutPage;
   let viewClientsPage: ViewClientsPage;
   let createClientsPage: CreateClientsPage;
@@ -28,6 +30,7 @@ test.describe('Test Suite 1', () => {
     loginPage = new LoginPage(page);
     reservationPage = new ReservationPage(page);
     roomsPage = new RoomsPage(page);
+    roomsNewPage = new RoomsNewRoomPage(page);
     logoutPage = new LogoutPage(page);
     viewClientsPage = new ViewClientsPage(page);
     createClientsPage = new CreateClientsPage(page);

@@ -1,9 +1,8 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
-export class RoomsPage {
+export class RoomsNewRoomPage {
   readonly page: Page;
   readonly viewButton: Locator;
-  readonly createRoomButton: Locator;
   readonly logoutButton: Locator;
   readonly saveButton: Locator;
   readonly backButton: Locator;
@@ -17,7 +16,6 @@ export class RoomsPage {
   constructor(page: Page) {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(1) > a');
-    this.createRoomButton = page.locator('#app > div > h2 > a');
     this.logoutButton = page.locator('#app > header > div > div > button');
     this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
     this.backButton = page.locator('#app > div > div.actions > a:nth-child(1)');
@@ -33,7 +31,16 @@ export class RoomsPage {
   async performView() {
     await this.viewButton.click();
   };
-  async performCreateReservation() {
-    await this.createRoomButton.click();
-  }
+  async performLogoutButton() {
+    await this.logoutButton.click();
+  };
+  async performSaveButton() {
+    await this.saveButton.click();
+  };
+  async performBackButton() {
+    await this.backButton.click();
+  };
+  // async fillCategoryField(randomEmail: string) {
+  //   await this.categoryField.fill(randomEmail);
+  // };
 }

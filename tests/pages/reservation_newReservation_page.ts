@@ -9,6 +9,7 @@ export class NewReservationPage {
   readonly roomField: Locator;
   readonly billField: Locator;
   readonly backButton: Locator;
+  readonly saveButton: Locator;
   readonly logoutButton: Locator;
 
   constructor(page: Page) {
@@ -20,6 +21,7 @@ export class NewReservationPage {
     this.roomField = page.locator('#app > div > div:nth-child(2) > div:nth-child(4) > select > option:nth-child(2)');
     this.billField = page.locator('#app > div > div:nth-child(2) > div:nth-child(5) > select > option:nth-child(2)');
     this.backButton = page.locator('#app > div > div:nth-child(3) > a');
+    this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
     this.logoutButton = page.locator('#app > header > div > div > button');
   }
 
@@ -30,6 +32,9 @@ export class NewReservationPage {
   
   async performBackButton() {
     await this.backButton.click();
+  };
+  async performSaveButton() {
+    await this.saveButton.click();
   };
   async performLogoutButton() {
     await this.logoutButton.click();

@@ -4,7 +4,7 @@ import {LogoutPage} from './pages/logout_page';
 import { ReservationPage } from './pages/reservation_page';
 import { NewReservationPage } from './pages/reservation_newReservation_page';
 import { RoomsPage } from './pages/rooms_page';
-import { RoomsNewRoomPage } from './pages/rooms_page_newRoom';
+import { RoomsNewRoomPage } from './pages/rooms_newRoom_page';
 import { ViewClientsPage } from './pages/view_clients_page';
 import { CreateClientsPage } from './pages/create_clients_page';
 import { EditClientsPage } from './pages/edit_clients_page';

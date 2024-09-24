@@ -13,7 +13,7 @@ test.describe('Test Suite 1', () => {
   let loginPage: LoginPage;
   let reservationPage: ReservationPage;
   let roomsPage: RoomsPage;
-  let roomsNewPage: RoomsNewRoomPage;
+  let roomsNewRoomPage: RoomsNewRoomPage;
   let logoutPage: LogoutPage;
   let viewClientsPage: ViewClientsPage;
   let createClientsPage: CreateClientsPage;
@@ -30,7 +30,7 @@ test.describe('Test Suite 1', () => {
     loginPage = new LoginPage(page);
     reservationPage = new ReservationPage(page);
     roomsPage = new RoomsPage(page);
-    roomsNewPage = new RoomsNewRoomPage(page);
+    roomsNewRoomPage = new RoomsNewRoomPage(page);
     logoutPage = new LogoutPage(page);
     viewClientsPage = new ViewClientsPage(page);
     createClientsPage = new CreateClientsPage(page);

@@ -18,7 +18,7 @@ export class NewReservationPage {
     this.startField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=text]');
     this.endField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=text]');
     this.clientField = page.locator('#app > div > div:nth-child(2) > div:nth-child(3) > select > option:nth-child(2)');
-    this.roomField = page.locator('#app > div > div:nth-child(2) > div:nth-child(4) > select > option:nth-child(2)');
+    this.roomField = page.locator('#app > div > div:nth-child(2) > div:nth-child(5) > select > option:nth-child(2)');
     this.billField = page.locator('#app > div > div:nth-child(2) > div:nth-child(5) > select > option:nth-child(2)');
     this.backButton = page.locator('#app > div > div:nth-child(3) > a');
     this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
@@ -33,15 +33,17 @@ export class NewReservationPage {
   async fillStartField(randomStartDate: string) {
     await this.startField.fill(randomStartDate);
   };
-
   async fillEndField(randomEndDate: string) {
     await this.endField.fill(randomEndDate);
   };
-  async fillClientField(randomClient: string) {
-    await this.clientField.fill(randomClient);
+  async fillClientField() {
+    await this.clientField.click();
   };
-  async fillClientField(randomClient: string) {
-    await this.clientField.fill(randomClient);
+  async fillRoomField() {
+    await this.clientField.click();
+  };
+  async fillBillField() {
+    await this.billField.click();
   };
   async performBackButton() {
     await this.backButton.click();

@@ -29,7 +29,20 @@ export class NewReservationPage {
   async performView() {
     await this.viewButton.click();
   };
-  
+  // Methods to fill the '...' fields with a given value:
+  async fillStartField(randomStartDate: string) {
+    await this.startField.fill(randomStartDate);
+  };
+
+  async fillEndField(randomEndDate: string) {
+    await this.endField.fill(randomEndDate);
+  };
+  async fillClientField(randomClient: string) {
+    await this.clientField.fill(randomClient);
+  };
+  async fillClientField(randomClient: string) {
+    await this.clientField.fill(randomClient);
+  };
   async performBackButton() {
     await this.backButton.click();
   };

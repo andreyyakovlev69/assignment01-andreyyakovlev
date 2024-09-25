@@ -63,8 +63,8 @@ test.describe('Test Suite 1', () => {
   })
   
   test('Test Case 01 Client New Create', async ({ page }) => {
-    await createClientPage.performCreateClient(randomClient, randomEmail);
-      //expect(page.getByText('New Room')).toBeVisible;
+    await createClientPage.performCreateClient(randomClient, randomEmail, randomPhone);
+    expect(page.getByText('Clients')).toBeVisible;
     });
 
 //  test('Test Case 1 Login', async ({ page }) => {

@@ -34,22 +34,24 @@ export class CreateClientPage {
   // async performView() {
   //   await this.viewButton.click();
   // };
-  async performCreateClient(randomClient: string, randomEmail: string){
+  async performCreateClient(randomClient: string, randomEmail: string, randomPhone: string){
     await this.viewButton.click();
     await this.createClientButton.click();
     await this.nameField.fill(randomClient);
-    await this.emailField.fill(randomEmail)
+    await this.emailField.fill(randomEmail);
+    await this.phoneField.fill(randomPhone);
+    await this.saveButton.click();
   };
 
   // Method to fill the 'telephone' field with a given value:
-  async fillTelephoneField(randomPhone: string) {
-    await this.phoneField.fill(randomPhone);
-  };
+  // async fillTelephoneField(randomPhone: string) {
+  //   await this.phoneField.fill(randomPhone);
+  // };
 
   // Method to perform a click action on the '...' button:
-  async performSaveButton() {
-    await this.saveButton.click();
-  };
+  // async performSaveButton() {
+  //   await this.saveButton.click();
+  // };
   async performBackButton() {
     await this.backButton.click();
   };

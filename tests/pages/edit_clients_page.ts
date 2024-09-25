@@ -7,8 +7,13 @@ export class EditClientsPage {
   readonly page: Page;
   readonly viewButton: Locator;
   readonly clientsHeader: Locator;
-  readonly clientMenuButton: Locator;
-  readonly editButton: Locator;
+  readonly idField: Locator;
+  readonly createdField: Locator;
+  readonly nameField: Locator;
+  readonly emailField: Locator;
+  readonly telephoneField: Locator;
+  readonly saveButton: Locator;
+  readonly deleteButton: Locator;
   readonly logoutButton: Locator;
   readonly backButton: Locator;
 
@@ -18,8 +23,13 @@ export class EditClientsPage {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(2) > a');
     this.clientsHeader = page.locator('#app > div > h2 > div');
-    this.clientMenuButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.action > img');
-    this.editButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.menu > a:nth-child(1)');
+    this.idField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=text]');
+    this.createdField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=text]');
+    this.nameField = page.locator('#app > div > div:nth-child(2) > div:nth-child(3) > input[type=text]');
+    this.emailField = page.locator('#app > div > div:nth-child(2) > div:nth-child(4) > input[type=email]');
+    this.telephoneField = page.locator('#app > div > div:nth-child(2) > div:nth-child(5) > input[type=text]');
+    this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
+    this.deleteButton = page.locator('#app > div > h2 > a');
     this.logoutButton = page.locator('#app > header > div > div > button');
     this.backButton = page.locator('#app > div > div.actions > a:nth-child(1)')
   }

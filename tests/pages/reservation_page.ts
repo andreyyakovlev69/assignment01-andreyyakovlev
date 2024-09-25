@@ -6,6 +6,7 @@ export class ReservationPage {
   readonly createReservationButton: Locator;
   readonly editReservationMenu: Locator;
   readonly editReservationButton: Locator;
+  readonly deleteReservationButton: Locator;
   readonly backButton: Locator;
   readonly logoutButton: Locator;
 
@@ -15,6 +16,7 @@ export class ReservationPage {
     this.createReservationButton = page.locator('#app > div > h2 > a');
     this.editReservationMenu = page.getByText('Edit');
     this.editReservationButton = page.locator('#app > div > div.reservations > div > div.action > img');
+    this.deleteReservationButton = page.locator('#app > div > div.reservations > div > div.menu > a:nth-child(2)');
     this.backButton = page.locator('#app > div > div:nth-child(3) > a');
     this.logoutButton = page.locator('#app > header > div > div > button');
   }

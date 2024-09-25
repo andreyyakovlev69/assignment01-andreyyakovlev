@@ -67,6 +67,12 @@ test.describe('Test Suite 1', () => {
     expect(page.getByText('Clients')).toBeVisible;
     });
 
+  test('Test Case 02 Bill New Create', async ({ page }) => {
+    await billsNewBillPage.performCreateNewBill();
+    expect(page.getByText('Value must be a whole number')).toBeVisible;
+  });
+
+    //
 //  test('Test Case 1 Login', async ({ page }) => {
 //   await expect(page).toHaveURL('http://localhost:3000/');  
 //   expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible;

@@ -8,6 +8,7 @@ export class BillsPage {
   readonly createBillButton: Locator;
   readonly editBillMenu: Locator;
   readonly editBillButton: Locator;
+  readonly deleteBillButton: Locator;
   readonly backButton: Locator;
 
   // Constructor to initialize the class with a page instance and define locators for the elements:
@@ -15,6 +16,7 @@ export class BillsPage {
     this.page = page;
     this.editBillMenu = page.locator('#app > div > div.bills > div > div.action > img');
     this.editBillButton = page.locator('#app > div > div.bills > div > div.menu > a:nth-child(1)');
+    this.deleteBillButton = page.locator('#app > div > div.bills > div > div.menu > a:nth-child(2)');
     this.viewButton = page.locator('#app > div > div > div:nth-child(3) > a');
     this.logoutButton = page.locator('#app > header > div > div > button');
     this.createBillButton = page.locator('#app > div > h2 > a');
@@ -31,10 +33,18 @@ export class BillsPage {
   async performCreateClientButton() {
     await this.createBillButton.click();
   };
+  async performEditBillMenu() {
+    await this.editBillMenu.click();
+  };
+  async performEditBillButton() {
+    await this.editBillButton.click();
+  };
+  async performDeleteBillButton() {
+    await this.deleteBillButton.click();
+  };
   async performBackButton() {
     await this.backButton.click();
   };
-
   async performLogoutButton() {
     await this.logoutButton.click();
   };

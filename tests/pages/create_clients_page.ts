@@ -31,22 +31,14 @@ export class CreateClientsPage {
 
   //Methods:
   // Method to perform a click action on the 'View' button:
-  async performView() {
+  // async performView() {
+  //   await this.viewButton.click();
+  // };
+  async performCreateClient(randomClient: string, randomEmail: string){
     await this.viewButton.click();
-  };
-
-  async performCreateClientButton(){
     await this.createClientButton.click();
-  };
-
-  // Method to fill the 'Name' field with a given value:
-  async fillNameField(randomClient: string) {
     await this.nameField.fill(randomClient);
-  };
-
-  // Method to fill the 'email' field with a given value:
-  async fillEmailField(randomEmail: string) {
-    await this.emailField.fill(randomEmail);
+    await this.emailField.fill(randomEmail)
   };
 
   // Method to fill the 'telephone' field with a given value:
@@ -65,4 +57,35 @@ export class CreateClientsPage {
   async performLogoutButton() {
     await this.logoutButton.click();
   };
+
+  // async performCreateClientButton(){
+  //   await this.createClientButton.click();
+  // };
+
+  // // Method to fill the 'Name' field with a given value:
+  // async fillNameField(randomClient: string) {
+  //   await this.nameField.fill(randomClient);
+  // };
+
+  // // Method to fill the 'email' field with a given value:
+  // async fillEmailField(randomEmail: string) {
+  //   await this.emailField.fill(randomEmail);
+  // };
+
+  // // Method to fill the 'telephone' field with a given value:
+  // async fillTelephoneField(randomPhone: string) {
+  //   await this.phoneField.fill(randomPhone);
+  // };
+
+  // // Method to perform a click action on the '...' button:
+  // async performSaveButton() {
+  //   await this.saveButton.click();
+  // };
+  // async performBackButton() {
+  //   await this.backButton.click();
+  // };
+
+  // async performLogoutButton() {
+  //   await this.logoutButton.click();
+  // };
 }

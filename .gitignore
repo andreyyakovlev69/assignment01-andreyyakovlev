@@ -7,3 +7,4 @@ node_modules/
 /README/
 package-lock.json
 package.json
+tests/example.spec.ts

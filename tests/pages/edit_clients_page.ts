@@ -38,14 +38,22 @@ export class EditClientsPage {
   async performView() {
     await this.viewButton.click();
   };
-
-  async performClientMenuButton(){
-    await this.clientMenuButton.click();
+  async fillNameField(randomClient: string) {
+    await this.nameField.fill(randomClient);
   };
-
-  // Method to perform a click action on the '...' buttons:
-  async performEditButton() {
-    await this.editButton.click();
+  // Method to fill the 'email' field with a given value:
+  async fillEmailField(randomEmail: string) {
+    await this.emailField.fill(randomEmail);
+  };
+  // Method to fill the 'telephone' field with a given value:
+  async fillTelephoneField(randomPhone: string) {
+    await this.telephoneField.fill(randomPhone);
+  };
+  async performSaveButton() {
+    await this.saveButton.click();
+  };
+  async performDeleteButton() {
+    await this.deleteButton.click();
   };
   async performBackButton() {
     await this.backButton.click();

@@ -168,12 +168,13 @@ test.describe('Test Suite 1', () => {
   });
 
   test('Test Case 11 Edit Clients', async ({ page }) => {
-    await editClientsPage.performView();
+    await viewClientsPage.performView();
     await expect(page).toHaveURL('http://localhost:3000/clients');  
     expect(page.getByText('Clients')).toBeVisible;
     
-    await editClientsPage.performClientMenuButton();
-    await editClientsPage.performEditButton();
+    await viewClientsPage.performEditClientMenu();
+    await viewClientsPage.performEditClientButton();
+    
     expect(page.getByText('ID')).toBeVisible;
     expect(page.getByText('Created')).toBeVisible;
     expect(page.getByText('Save')).toBeVisible;

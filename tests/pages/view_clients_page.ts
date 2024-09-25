@@ -4,6 +4,9 @@ export class ViewClientsPage {
   // Declaring class properties for the page and various buttons:
   readonly page: Page;
   readonly viewButton: Locator;
+  readonly editClientField: Locator;
+  readonly deleteClientButton: Locator;
+  readonly editClientButton: Locator;
   readonly logoutButton: Locator;
   readonly createClientButton: Locator;
   readonly backButton: Locator;
@@ -12,6 +15,9 @@ export class ViewClientsPage {
   constructor(page: Page) {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(2) > a');
+    this.editClientField = page.locator('#app > div > div.clients > div:nth-child(1) > div.action > img');
+    this.editClientButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.menu > a:nth-child(1)');
+    this.deleteClientButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.menu > a:nth-child(2)');
     this.logoutButton = page.locator('#app > header > div > div > button');
     this.createClientButton = page.locator('#app > div > h2 > a');
     this.backButton = page.locator('#app > div > div:nth-child(3) > a')

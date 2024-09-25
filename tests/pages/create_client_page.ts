@@ -1,7 +1,7 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
-// Class representing the 'Create Clients' page using the Page Object Model (POM) design pattern.
-export class CreateClientsPage {
+// Class representing the 'Create Client' page using the Page Object Model (POM) design pattern.
+export class CreateClientPage {
   // Declaring class properties for the page and various buttons (view, create client, and save client).
   readonly page: Page;
   readonly viewButton: Locator;

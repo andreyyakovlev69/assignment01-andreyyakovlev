@@ -11,7 +11,7 @@ import { RoomsPage } from './pages/rooms_page';
 import { RoomsNewRoomPage } from './pages/rooms_newRoom_page';
 import { RoomsEditRoomPage } from './pages/rooms_editRoom_page';
 import { ViewClientsPage } from './pages/view_clients_page';
-import { CreateClientsPage } from './pages/create_clients_page';
+import { CreateClientPage } from './pages/create_client_page';
 import { EditClientsPage } from './pages/edit_clients_page';
 import { faker } from '@faker-js/faker';
 
@@ -28,7 +28,7 @@ test.describe('Test Suite 1', () => {
   let roomsEditRoomPage: RoomsEditRoomPage;
   let logoutPage: LogoutPage;
   let viewClientsPage: ViewClientsPage;
-  let createClientsPage: CreateClientsPage;
+  let createClientPage: CreateClientPage;
   let editClientsPage: EditClientsPage;
 
   // Generate random input data:
@@ -54,7 +54,7 @@ test.describe('Test Suite 1', () => {
     roomsNewRoomPage = new RoomsNewRoomPage(page);
     roomsEditRoomPage = new RoomsEditRoomPage(page);
     viewClientsPage = new ViewClientsPage(page);
-    createClientsPage = new CreateClientsPage(page);
+    createClientPage = new CreateClientPage(page);
     editClientsPage = new EditClientsPage(page);
 
     await loginPage.goto();
@@ -63,7 +63,7 @@ test.describe('Test Suite 1', () => {
   })
   
   test('Test Case 01 Client New Create', async ({ page }) => {
-    await createClientsPage.performCreateClient(randomClient, randomEmail);
+    await createClientPage.performCreateClient(randomClient, randomEmail);
       //expect(page.getByText('New Room')).toBeVisible;
     });
 

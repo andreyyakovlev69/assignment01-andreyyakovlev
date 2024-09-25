@@ -24,13 +24,13 @@ test.describe('Test Suite 1', () => {
 
   // Generate random input data:
   const randomStartDate = faker.date.soon().toISOString().split('T')[0];
-  const randomEndDate = faker.date.soon().toISOString().split('T')[0];
+  const randomEndDate = faker.date.soon({refDate: randomStartDate}).toISOString().split('T')[0];
   const randomClient = faker.person.fullName();
   const randomEmail = faker.internet.email();
   const randomPhone = faker.phone.number();
   const randomNumber = faker.number.int({ min: 1,max: 500});
   const randomFloor = faker.number.int({ min: 1,max: 5});
-  const randomPrice = faker.number.int({ min: 500,max: 900});
+  const randomPrice = faker.number.int({ min: 5000,max: 9000});
 
   test.beforeEach(async ({page}) => {
     loginPage = new LoginPage(page);

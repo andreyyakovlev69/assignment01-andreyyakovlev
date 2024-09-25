@@ -6,6 +6,7 @@ export class RoomsPage {
   readonly backButton: Locator;
   readonly roomMenuButton: Locator;
   readonly roomEditButton: Locator;
+  readonly roomDeleteButton: Locator;
   readonly logoutButton: Locator;
   readonly createRoomButton: Locator;
 
@@ -15,6 +16,7 @@ export class RoomsPage {
     this.createRoomButton = page.locator('#app > div > h2 > a');
     this.roomMenuButton = page.locator('#app > div > div.rooms > div:nth-child(1) > div.action > img');
     this.roomEditButton = page.locator('#app > div > div.rooms > div:nth-child(1) > div.menu > a:nth-child(1)');
+    this.roomDeleteButton = page.locator('#app > div > div.rooms > div:nth-child(1) > div.menu > a:nth-child(2)');
     this.logoutButton = page.locator('#app > header > div > div > button');
     this.backButton = page.locator('#app > div > div:nth-child(3) > a');
   }
@@ -33,6 +35,9 @@ export class RoomsPage {
   // Method to perform a click action on the 'roomEditButton' button:
   async performRoomEditButton() {
     await this.roomMenuButton.click();
+  };
+  async performRoomDeleteButton() {
+    await this.roomDeleteButton.click();
   };
   async performLogoutButton() {
     await this.logoutButton.click();

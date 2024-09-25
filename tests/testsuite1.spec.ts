@@ -3,6 +3,7 @@ import {LoginPage} from './pages/login_page';
 import {LogoutPage} from './pages/logout_page';
 import { ReservationPage } from './pages/reservation_page';
 import { NewReservationPage } from './pages/reservation_newReservation_page';
+import { EditReservationPage } from './pages/reservation_editReservation_page';
 import { RoomsPage } from './pages/rooms_page';
 import { RoomsNewRoomPage } from './pages/rooms_newRoom_page';
 import { RoomsEditRoomPage } from './pages/rooms_editRoom_page';
@@ -15,6 +16,7 @@ test.describe('Test Suite 1', () => {
   let loginPage: LoginPage;
   let reservationPage: ReservationPage;
   let newReservationPage: NewReservationPage;
+  let editReservationPage: EditReservationPage;
   let roomsPage: RoomsPage;
   let roomsNewRoomPage: RoomsNewRoomPage;
   let roomsEditRoomPage: RoomsEditRoomPage;
@@ -36,6 +38,8 @@ test.describe('Test Suite 1', () => {
   test.beforeEach(async ({page}) => {
     loginPage = new LoginPage(page);
     reservationPage = new ReservationPage(page);
+    newReservationPage = new EditReservationPage(page);
+    editReservationPage = new EditReservationPage(page);
     roomsPage = new RoomsPage(page);
     roomsNewRoomPage = new RoomsNewRoomPage(page);
     roomsEditRoomPage = new RoomsEditRoomPage(page);

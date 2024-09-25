@@ -5,10 +5,10 @@ import { ReservationPage } from './pages/reservation_page';
 import { NewReservationPage } from './pages/reservation_newReservation_page';
 import { RoomsPage } from './pages/rooms_page';
 import { RoomsNewRoomPage } from './pages/rooms_newRoom_page';
+import { RoomsEditRoomPage } from './pages/rooms_editRoom_page';
 import { ViewClientsPage } from './pages/view_clients_page';
 import { CreateClientsPage } from './pages/create_clients_page';
 import { EditClientsPage } from './pages/edit_clients_page';
-
 import { faker } from '@faker-js/faker';
 
 test.describe('Test Suite 1', () => {
@@ -17,6 +17,7 @@ test.describe('Test Suite 1', () => {
   let newReservationPage: NewReservationPage;
   let roomsPage: RoomsPage;
   let roomsNewRoomPage: RoomsNewRoomPage;
+  let roomsEditRoomPage: RoomsEditRoomPage;
   let logoutPage: LogoutPage;
   let viewClientsPage: ViewClientsPage;
   let createClientsPage: CreateClientsPage;
@@ -37,6 +38,7 @@ test.describe('Test Suite 1', () => {
     reservationPage = new ReservationPage(page);
     roomsPage = new RoomsPage(page);
     roomsNewRoomPage = new RoomsNewRoomPage(page);
+    roomsEditRoomPage = new RoomsEditRoomPage(page);
     logoutPage = new LogoutPage(page);
     viewClientsPage = new ViewClientsPage(page);
     createClientsPage = new CreateClientsPage(page);

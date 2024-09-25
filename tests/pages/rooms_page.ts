@@ -30,10 +30,10 @@ export class RoomsPage {
   async performRoomMenuButton() {
     await this.roomMenuButton.click();
   };
-// Method to perform a click action on the 'roomEditButton' button:
-async performRoomEditButton() {
-  await this.roomMenuButton.click();
-};
+  // Method to perform a click action on the 'roomEditButton' button:
+  async performRoomEditButton() {
+    await this.roomMenuButton.click();
+  };
   async performLogoutButton() {
     await this.logoutButton.click();
   };

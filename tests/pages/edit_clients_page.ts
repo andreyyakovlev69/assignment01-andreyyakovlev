@@ -17,7 +17,6 @@ export class EditClientsPage {
     // Assign the page passed to the constructor to the class's 'page' property:
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(2) > a');
-
     this.clientsHeader = page.locator('#app > div > h2 > div');
     this.clientMenuButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.action > img');
     this.editButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.menu > a:nth-child(1)');

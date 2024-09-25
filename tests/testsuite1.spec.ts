@@ -1,6 +1,7 @@
 import {test, expect} from '@playwright/test';
 import {LoginPage} from './pages/login_page';
 import {LogoutPage} from './pages/logout_page';
+import { BillsPage } from './pages/bills_page';
 import { ReservationPage } from './pages/reservation_page';
 import { NewReservationPage } from './pages/reservation_newReservation_page';
 import { EditReservationPage } from './pages/reservation_editReservation_page';
@@ -14,6 +15,7 @@ import { faker } from '@faker-js/faker';
 
 test.describe('Test Suite 1', () => {
   let loginPage: LoginPage;
+  let billsPage: BillsPage;
   let reservationPage: ReservationPage;
   let newReservationPage: NewReservationPage;
   let editReservationPage: EditReservationPage;
@@ -37,6 +39,7 @@ test.describe('Test Suite 1', () => {
 
   test.beforeEach(async ({page}) => {
     loginPage = new LoginPage(page);
+    billsPage = new BillsPage(page);
     reservationPage = new ReservationPage(page);
     newReservationPage = new EditReservationPage(page);
     editReservationPage = new EditReservationPage(page);

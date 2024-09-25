@@ -6,6 +6,8 @@ export class RoomsEditRoomPage {
   readonly logoutButton: Locator;
   readonly saveButton: Locator;
   readonly backButton: Locator;
+  readonly idField: Locator;
+  readonly createdField: Locator;
   readonly categoryDoubleField: Locator;
   readonly numberField: Locator;
   readonly floorField: Locator;
@@ -19,6 +21,8 @@ export class RoomsEditRoomPage {
     this.logoutButton = page.locator('#app > header > div > div > button');
     this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
     this.backButton = page.locator('#app > div > div.actions > a:nth-child(1)');
+    this.idField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=text]');
+    this.createdField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=text]');
     this.categoryDoubleField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > select > option:nth-child(1)');
     this.numberField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=number]');
     this.floorField = page.locator('#app > div > div:nth-child(2) > div:nth-child(3) > input[type=number]');

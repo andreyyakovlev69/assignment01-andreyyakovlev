@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
-export class BillsPage {
+export class BillsNewBillPage {
   // Declaring class properties for the page and various buttons:
   readonly page: Page;
   readonly viewButton: Locator;

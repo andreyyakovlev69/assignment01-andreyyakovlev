@@ -1,7 +1,7 @@
 import { th } from '@faker-js/faker';
 import { expect, type Locator, type Page } from '@playwright/test';
 
-export class BillsPage {
+export class BillsEditPage {
   // Declaring class properties for the page and various buttons:
   readonly page: Page;
   readonly viewButton: Locator;

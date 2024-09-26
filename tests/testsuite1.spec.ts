@@ -69,8 +69,10 @@ test.describe('Test Suite 1', () => {
 
   test('Test Case 02 Bill New Create', async ({ page }) => {
     await billsNewBillPage.performCreateNewBill();
-    expect(page.getByText('Value must be a whole number')).toBeVisible;
-  });
+    expect(page.getByRole('spinbutton')).toBeVisible;
+    expect(page.getByText('✓')).toBeVisible;
+    expect(page.getByText('Bills')).toBeVisible
+    });
 
     //
 //  test('Test Case 1 Login', async ({ page }) => {

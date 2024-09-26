@@ -25,7 +25,7 @@ export class ReservationPage {
   async performView() {
     await this.viewButton.click();
   };
-  async performCreateReservation() {
+  async performCreateReservationButton() {
     await this.createReservationButton.click();
   };
   async performEditReservationButton() {

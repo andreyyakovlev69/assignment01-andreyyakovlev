@@ -48,7 +48,7 @@ test.describe('Test Suite 1', () => {
     billsEditPage = new BillsEditPage(page);
     billsNewBillPage = new BillsNewBillPage(page);
     reservationPage = new ReservationPage(page);
-    newReservationPage = new EditReservationPage(page);
+    newReservationPage = new NewReservationPage(page);
     editReservationPage = new EditReservationPage(page);
     roomsPage = new RoomsPage(page);
     roomsNewRoomPage = new RoomsNewRoomPage(page);
@@ -61,19 +61,23 @@ test.describe('Test Suite 1', () => {
     await loginPage.performLogin(`${process.env.TEST_USERNAME}`, `${process.env.TEST_PASSWORD}`);
 
   })
-  
-  test('Test Case 01 Client New Create', async ({ page }) => {
-    await createClientPage.performCreateClient(randomClient, randomEmail, randomPhone);
-    expect(page.getByText('Clients')).toBeVisible;
-    });
+  //Ready TC-s:
+  // test('Test Case 01 Client New Create', async ({ page }) => {
+  //   await createClientPage.performCreateClient(randomClient, randomEmail, randomPhone);
+  //   expect(page.getByText('Clients')).toBeVisible;
+  //   });
 
-  test('Test Case 02 Bill New Create', async ({ page }) => {
-    await billsNewBillPage.performCreateNewBill();
-    expect(page.getByRole('spinbutton')).toBeVisible;
-    expect(page.getByText('✓')).toBeVisible;
-    expect(page.getByText('Bills')).toBeVisible
-    });
+  // test('Test Case 02 Bill New Create', async ({ page }) => {
+  //   await billsNewBillPage.performCreateNewBill();
+  //   expect(page.getByRole('spinbutton')).toBeVisible;
+  //   expect(page.getByText('✓')).toBeVisible;
+  //   expect(page.getByText('Bills')).toBeVisible
+  //   });
 
+  test('Test Case 03 Reservation New Create', async ({ page }) => {
+    await newReservationPage.performCreateNewReservation(randomStartDate, randomEndDate);
+    expect(page.getByText('Reservations')).toBeVisible
+  });
     //
 //  test('Test Case 1 Login', async ({ page }) => {
 //   await expect(page).toHaveURL('http://localhost:3000/');  

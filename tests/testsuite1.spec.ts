@@ -37,9 +37,9 @@ test.describe('Test Suite 1', () => {
   const randomClient = faker.person.fullName();
   const randomEmail = faker.internet.email();
   const randomPhone = faker.phone.number();
-  const randomNumber = faker.number.int({ min: 1,max: 500});
-  const randomFloor = faker.number.int({ min: 1,max: 5});
-  const randomPrice = faker.number.int({ min: 5000,max: 9000});
+  const randomNumber = faker.number.int({ min: 1,max: 500}).toString();
+  const randomFloor = faker.number.int({ min: 1,max: 5}).toString();
+  const randomPrice = faker.number.int({ min: 5000,max: 9000}).toString();
 
   test.beforeEach(async ({page}) => {
     loginPage = new LoginPage(page);
@@ -74,10 +74,16 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Bills')).toBeVisible
   //   });
 
-  test('Test Case 03 Reservation New Create', async ({ page }) => {
-    await newReservationPage.performCreateNewReservation(randomStartDate, randomEndDate);
-    expect(page.getByText('Reservations')).toBeVisible
+  // test('Test Case 03 Reservation New Create', async ({ page }) => {
+  //   await newReservationPage.performCreateNewReservation(randomStartDate, randomEndDate);
+  //   expect(page.getByText('Reservations')).toBeVisible
+  // });
+
+  test('Test Case 04 Room New Create', async ({ page }) => {
+    await roomsNewRoomPage.performCreateNewRoom(randomNumber, randomFloor, randomPrice);
+    expect(page.getByText('Rooms')).toBeVisible
   });
+
     //
 //  test('Test Case 1 Login', async ({ page }) => {
 //   await expect(page).toHaveURL('http://localhost:3000/');  

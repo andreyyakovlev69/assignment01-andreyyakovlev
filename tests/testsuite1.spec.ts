@@ -3,7 +3,7 @@ import {LoginPage} from './pages/login_page';
 import {LogoutPage} from './pages/logout_page';
 import { BillsPage } from './pages/bills_page';
 import { BillsNewBillPage } from './pages/bills_newBill_page';
-import { BillsEditPage } from './pages/bills_editBill_page';
+import { BillsEditBillPage } from './pages/bills_editBill_page';
 import { ReservationPage } from './pages/reservation_page';
 import { NewReservationPage } from './pages/reservation_newReservation_page';
 import { EditReservationPage } from './pages/reservation_editReservation_page';
@@ -18,7 +18,7 @@ import { faker } from '@faker-js/faker';
 test.describe('Test Suite 1', () => {
   let loginPage: LoginPage;
   let billsPage: BillsPage;
-  let billsEditPage: BillsEditPage;
+  let billsEditBillPage: BillsEditBillPage;
   let billsNewBillPage: BillsNewBillPage;
   let reservationPage: ReservationPage;
   let newReservationPage: NewReservationPage;
@@ -45,8 +45,8 @@ test.describe('Test Suite 1', () => {
     loginPage = new LoginPage(page);
     logoutPage = new LogoutPage(page);
     billsPage = new BillsPage(page);
-    billsEditPage = new BillsEditPage(page);
     billsNewBillPage = new BillsNewBillPage(page);
+    billsEditBillPage = new BillsEditBillPage(page);
     reservationPage = new ReservationPage(page);
     newReservationPage = new NewReservationPage(page);
     editReservationPage = new EditReservationPage(page);
@@ -79,10 +79,18 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Reservations')).toBeVisible
   // });
 
-  test('Test Case 04 Room New Create', async ({ page }) => {
-    await roomsNewRoomPage.performCreateNewRoom(randomNumber, randomFloor, randomPrice);
-    expect(page.getByText('Rooms')).toBeVisible
+  // test('Test Case 04 Room New Create', async ({ page }) => {
+  //   await roomsNewRoomPage.performCreateNewRoom(randomNumber, randomFloor, randomPrice);
+  //   expect(page.getByText('Rooms')).toBeVisible
+  // });
+
+  test('Test Case 05 Bills Edit', async ({ page }) => {
+    await billsEditBillPage.performBillsEdit(randomPrice);
+    expect(page.getByText('Bills')).toBeVisible
   });
+
+
+
 
     //
 //  test('Test Case 1 Login', async ({ page }) => {

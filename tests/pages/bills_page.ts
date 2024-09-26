@@ -30,7 +30,7 @@ export class BillsPage {
   };
 
   // Method to perform a click action on the 'Create Client' button:
-  async performCreateClientButton() {
+  async performCreateBillButton() {
     await this.createBillButton.click();
   };
   async performEditBillMenu() {

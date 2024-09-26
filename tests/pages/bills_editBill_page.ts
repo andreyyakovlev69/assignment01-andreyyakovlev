@@ -1,10 +1,12 @@
-import { th } from '@faker-js/faker';
+//import { th } from '@faker-js/faker';
 import { expect, type Locator, type Page } from '@playwright/test';
 
-export class BillsEditPage {
+export class BillsEditBillPage {
   // Declaring class properties for the page and various buttons:
   readonly page: Page;
   readonly viewButton: Locator;
+  readonly editBillMenu: Locator;
+  readonly editBillButton: Locator;
   readonly valueField: Locator;
   readonly paidField: Locator;
   readonly saveButton: Locator;
@@ -16,9 +18,11 @@ export class BillsEditPage {
   constructor(page: Page) {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(3) > a');
-    this.valueField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=number]');
-    this.paidField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > div');
-    this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
+    this.editBillMenu = page.locator('.action').first();
+    this.editBillButton = page.locator('#app > div > div.bills > div > div.menu > a:nth-child(1)');
+    this.valueField = page.getByRole('spinbutton');
+    this.paidField = page.locator('.checkbox');
+    this.saveButton = page.getByText('Save');
     this.deleteButton = page.locator('#app > div > h2 > a');
     this.logoutButton = page.locator('#app > header > div > div > button');
     this.backButton = page.locator('#app > div > div.actions > a:nth-child(1)')
@@ -26,25 +30,21 @@ export class BillsEditPage {
 
   //Methods:
   // Method to perform an action on the '...' button:
-  async performView() {
+  async performBillsEdit(randomPrice: string){
     await this.viewButton.click();
-  };
-  async fillValueField(randomPrice: string) {
+    await this.editBillMenu.click();
+    await this.editBillButton.click();
     await this.valueField.fill(randomPrice);
-  };
-  async performPaidField() {
     await this.paidField.click();
-  };
+    await this.saveButton.click()
+  };  
   async performBackButton() {
     await this.backButton.click();
-  };
-  async performSaveButton() {
-    await this.saveButton.click();
   };
   async performDeleteButton() {
     await this.deleteButton.click();
   };
   async performLogoutButton() {
     await this.logoutButton.click();
-  };
+  }
 }

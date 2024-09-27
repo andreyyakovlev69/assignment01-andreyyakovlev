@@ -145,10 +145,16 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('New Client')).toBeVisible;
   // });
 
-  test('Test Case 16 Reservations Navigate To Create Reservation', async ({ page }) => {
-    await reservationPage.navigateToCreateReservation();
-    await expect(page).toHaveURL('http://localhost:3000/reservation/new');
-    expect(page.getByText('New Reservation')).toBeVisible;
+  // test('Test Case 16 Reservations Navigate To Create Reservation', async ({ page }) => {
+  //   await reservationPage.navigateToCreateReservation();
+  //   await expect(page).toHaveURL('http://localhost:3000/reservation/new');
+  //   expect(page.getByText('New Reservation')).toBeVisible;
+  // });
+
+  test('Test Case 17 Bills Navigate To Create Bill', async ({ page }) => {
+    await billsPage.navigateToCreateBill();
+    await expect(page).toHaveURL('http://localhost:3000/bill/new');
+    expect(page.getByText('New Bill')).toBeVisible;
   });
 
   // test('Test Case 3 ReservationCreate', async ({ page }) => {

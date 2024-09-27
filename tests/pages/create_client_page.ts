@@ -20,7 +20,7 @@ export class CreateClientPage {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(2) > a');
     this.newClientHeader = page.locator('#app > div > h2 > div');
-    this.createClientButton = page.locator('#app > div > h2 > a');
+    this.createClientButton = page.getByRole('link', { name: 'Create Client' });
     this.nameField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=text]');
     this.emailField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=email]');
     this.phoneField = page.locator('#app > div > div:nth-child(2) > div:nth-child(3) > input[type=text]');

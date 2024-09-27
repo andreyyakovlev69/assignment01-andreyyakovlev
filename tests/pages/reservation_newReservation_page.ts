@@ -20,8 +20,11 @@ export class NewReservationPage {
     this.startField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=text]');
     this.endField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=text]');
     this.clientField = page.getByRole('combobox').first();
-    this.roomField = page.locator('div').filter({ hasText: /^Room- Not selected -Floor 1, Room 288Floor 1, Room 102$/ }).getByRole('combobox');
-    this.billField = page.locator('div').filter({ hasText: /^Bill- Not selected -ID: 1$/ }).getByRole('combobox');
+    // this.roomField = page.locator('div').filter({ hasText: /^Room- Not selected -Floor 1, Room 288Floor 1, Room 102$/ }).getByRole('combobox');
+    //this.roomField = page.locator('div').filter({ hasText: /^Room- / }).getByRole('combobox');
+    this.roomField = page.getByRole('combobox').first();
+    // this.billField = page.locator('div').filter({ hasText: /^Bill- Not selected -ID: 1$/ }).getByRole('combobox');
+    this.billField = page.locator('div').filter({ hasText: /^Bill- Not selected / }).getByRole('combobox');
     this.backButton = page.locator('#app > div > div:nth-child(3) > a');
     this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
     this.logoutButton = page.locator('#app > header > div > div > button');

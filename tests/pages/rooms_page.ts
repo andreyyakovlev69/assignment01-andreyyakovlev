@@ -13,11 +13,12 @@ export class RoomsPage {
   constructor(page: Page) {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(1) > a');
-    this.createRoomButton = page.locator('#app > div > h2 > a');
-    this.roomMenuButton = page.locator('#app > div > div.rooms > div:nth-child(1) > div.action > img');
-    this.roomEditButton = page.locator('#app > div > div.rooms > div:nth-child(1) > div.menu > a:nth-child(1)');
-    this.roomDeleteButton = page.locator('#app > div > div.rooms > div:nth-child(1) > div.menu > a:nth-child(2)');
-    this.logoutButton = page.locator('#app > header > div > div > button');
+    this.createRoomButton = page.getByRole('link', { name: 'Create Room' });
+    // this.roomMenuButton = page.getByRole('img');
+    this.roomMenuButton = page.locator('.action').first();;
+    this.roomEditButton = page.getByText('Edit');
+    this.roomDeleteButton = page.getByText('Delete');
+    this.logoutButton = page.getByRole('button', { name: 'Logout' });
     this.backButton = page.getByRole('link', { name: 'Back' });
   }
 

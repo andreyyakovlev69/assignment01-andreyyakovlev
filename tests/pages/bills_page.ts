@@ -37,11 +37,9 @@ async navigateToBillDeleteButton() {
 };
 async navigateToLogoutButton() {
   await this.viewButton.click();
-  await this.viewButton.click();
   await this.logoutButton.click();
 };
 async navigateBack() {
-  await this.viewButton.click();
   await this.viewButton.click();
   await this.backButton.click();
 };

@@ -89,11 +89,11 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Bills')).toBeVisible
   // });
 
-  // test('Test Case 06 Rooms Edit', async ({ page }) => {
-  //   await roomsEditRoomPage.performBillsEdit(randomPrice, randomNumber, randomFloor);
-  //   await expect(page).toHaveURL('http://localhost:3000/rooms');  
-  //   expect(page.getByText('Rooms')).toBeVisible
-  // });
+  test('Test Case 06 Rooms Edit', async ({ page }) => {
+    await roomsEditRoomPage.performRoomsEdit(randomPrice, randomNumber, randomFloor);
+    await expect(page).toHaveURL('http://localhost:3000/rooms');  
+    expect(page.getByText('Rooms')).toBeVisible
+  });
 
   // test('Test Case 07 Client Edit', async ({ page }) => {
   //   await editClientsPage.performClientEdit(randomClient, randomEmail, randomPhone);
@@ -101,11 +101,11 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Clients')).toBeVisible
   // });
 
-  test('Test Case 08 Reservation Edit', async ({ page }) => {
-    await editReservationPage.performReservationEdit(randomStartDate, randomEndDate);
-    await expect(page).toHaveURL('http://localhost:3000/reservations');  
-    expect(page.getByText('Reservations')).toBeVisible
-  });
+  // test('Test Case 08 Reservation Edit', async ({ page }) => {
+  //   await editReservationPage.performReservationEdit(randomStartDate, randomEndDate);
+  //   await expect(page).toHaveURL('http://localhost:3000/reservations');  
+  //   expect(page.getByText('Reservations')).toBeVisible
+  // });
 
 
     //

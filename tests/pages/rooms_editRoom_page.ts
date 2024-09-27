@@ -36,7 +36,7 @@ export class RoomsEditRoomPage {
   }
 
   //Methods:
-  async performBillsEdit(randomPrice, randomNumber, randomFloor){
+  async performRoomsEdit(randomPrice, randomNumber, randomFloor){
     await this.viewButton.click();
     await this.roomMenuButton.click();
     await this.roomEditButton.click();

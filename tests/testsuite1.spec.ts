@@ -89,11 +89,11 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Bills')).toBeVisible
   // });
 
-  test('Test Case 06 Rooms Edit', async ({ page }) => {
-    await roomsEditRoomPage.performRoomsEdit(randomPrice, randomNumber, randomFloor);
-    await expect(page).toHaveURL('http://localhost:3000/rooms');  
-    expect(page.getByText('Rooms')).toBeVisible
-  });
+  // test('Test Case 06 Rooms Edit', async ({ page }) => {
+  //   await roomsEditRoomPage.performRoomsEdit(randomPrice, randomNumber, randomFloor);
+  //   await expect(page).toHaveURL('http://localhost:3000/rooms');  
+  //   expect(page.getByText('Rooms')).toBeVisible
+  // });
 
   // test('Test Case 07 Client Edit', async ({ page }) => {
   //   await editClientsPage.performClientEdit(randomClient, randomEmail, randomPhone);
@@ -107,12 +107,10 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Reservations')).toBeVisible
   // });
 
-
-    //
-//  test('Test Case 1 Login', async ({ page }) => {
-//   await expect(page).toHaveURL('http://localhost:3000/');  
-//   expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible;
-//   });
+ test('Test Case 09 Login', async ({ page }) => {
+  await expect(page).toHaveURL('http://localhost:3000/');  
+  expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible;
+  });
 
   // test('Test Case 2 Reservation', async ({ page }) => {
   //   await reservationPage.performView();

@@ -19,6 +19,7 @@ export class LoginPage {
   }
 
   async performLogin(username: string, password: string) {
+    await this.page.goto(`${process.env.BASE_URL}`);
     await this.usernameTextfield.fill(username);
     await this.passwordTextfield.fill(password);
     await this.loginButton.click();

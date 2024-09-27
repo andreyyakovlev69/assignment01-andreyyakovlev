@@ -24,21 +24,16 @@ export class DashboardPage {
   async navigateToRooms() {
     await this.roomsViewButton.click();
   };
-
   async navigateToClient() {
     await this.clientsViewButton.click();
   };
-  // async navigeteToReservationMenu() {
-  //   await this.viewButton.click();
-  //   await this.editReservationMenu.click();
-  //   await this.editReservationButton.click();
-  // };
-  // async navigateToReservationDeleteButton() {
-  //   await this.viewButton.click();
-  //   await this.editReservationMenu.click();
-  //   await this.deleteReservationButton.click();
-  // async performLogout() {
-  //   await this.logoutButton.click();
-  // };
-  // };
+  async navigateToBills() {
+    await this.billsViewButton.click();
+  };
+  async navigateToReservation() {
+    await this.reservationsViewButton.click();
+  };
+  async performLogout() {
+    await this.logoutButton.click();
+  };
 }

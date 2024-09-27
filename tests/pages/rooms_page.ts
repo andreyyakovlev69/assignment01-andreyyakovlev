@@ -18,7 +18,7 @@ export class RoomsPage {
     this.roomEditButton = page.locator('#app > div > div.rooms > div:nth-child(1) > div.menu > a:nth-child(1)');
     this.roomDeleteButton = page.locator('#app > div > div.rooms > div:nth-child(1) > div.menu > a:nth-child(2)');
     this.logoutButton = page.locator('#app > header > div > div > button');
-    this.backButton = page.locator('#app > div > div:nth-child(3) > a');
+    this.backButton = page.getByRole('link', { name: 'Back' });
   }
 
   //Methods:

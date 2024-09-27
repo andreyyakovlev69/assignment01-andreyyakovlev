@@ -22,29 +22,55 @@ export class ViewClientsPage {
     this.createClientButton = page.locator('#app > div > h2 > a');
     this.backButton = page.locator('#app > div > div:nth-child(3) > a')
   }
+    //Methods:
+    async navigateToCreateClient() {
+      await this.viewButton.click();
+      await this.createClientButton.click();
+    };
+    async navigeteToClientMenu() {
+      await this.viewButton.click();
+      await this.editClientMenu.click();
+      await this.editClientButton.click();
+    };
+    async navigateToClientDeleteButton() {
+      await this.viewButton.click();
+      await this.editClientButton.click();
+      await this.deleteClientButton.click();
+    };
+    async navigateToLogoutButton() {
+      await this.viewButton.click();
+      await this.viewButton.click();
+      await this.logoutButton.click();
+    };
+    async navigateBack() {
+      await this.viewButton.click();
+      await this.viewButton.click();
+      await this.backButton.click();
+    };
+  }
 
-  //Methods:
-  async performView() {
-    await this.viewButton.click();
-  };
-  async performEditClientMenu() {
-    await this.editClientMenu.click();
-  };
-  async performEditClientButton() {
-    await this.editClientButton.click();
-  };
-  async performDeleteClientButton() {
-    await this.deleteClientButton.click();
-  };
-  // Method to perform a click action on the 'Create Client' button:
-  async performCreateClientButton() {
-    await this.createClientButton.click();
-  };
-  async performBackButton() {
-    await this.backButton.click();
-  };
+//   //Methods:
+//   async performView() {
+//     await this.viewButton.click();
+//   };
+//   async performEditClientMenu() {
+//     await this.editClientMenu.click();
+//   };
+//   async performEditClientButton() {
+//     await this.editClientButton.click();
+//   };
+//   async performDeleteClientButton() {
+//     await this.deleteClientButton.click();
+//   };
+//   // Method to perform a click action on the 'Create Client' button:
+//   async performCreateClientButton() {
+//     await this.createClientButton.click();
+//   };
+//   async performBackButton() {
+//     await this.backButton.click();
+//   };
 
-  async performLogoutButton() {
-    await this.logoutButton.click();
-  };
-}
+//   async performLogoutButton() {
+//     await this.logoutButton.click();
+//   };
+// }

@@ -24,7 +24,6 @@ export class ViewClientsPage {
   }
 
   //Methods:
-  // Method to perform a click action on the 'View' button:
   async performView() {
     await this.viewButton.click();
   };

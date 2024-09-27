@@ -1,11 +1,13 @@
-import { th } from '@faker-js/faker';
+//import { th } from '@faker-js/faker';
 import { expect, type Locator, type Page } from '@playwright/test';
 
-// Class representing the 'Edit Clients' page using the Page Object Model (POM) design pattern.
+// Class representing the 'Edit Clients' page using the POM design pattern:
 export class EditClientsPage {
-  // Declaring class properties for the page and various buttons (view, create client, and save client).
+  // Declaring class atributes for the page and various buttons:
   readonly page: Page;
   readonly viewButton: Locator;
+  readonly editClientMenu: Locator;
+  readonly editClientButton: Locator;
   readonly clientsHeader: Locator;
   readonly idField: Locator;
   readonly createdField: Locator;
@@ -22,6 +24,8 @@ export class EditClientsPage {
     // Assign the page passed to the constructor to the class's 'page' property:
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(2) > a');
+    this.editClientMenu = page.locator('#app > div > div.clients > div:nth-child(1) > div.action > img');
+    this.editClientButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.menu > a:nth-child(1)');
     this.clientsHeader = page.locator('#app > div > h2 > div');
     this.idField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=text]');
     this.createdField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=text]');
@@ -34,25 +38,16 @@ export class EditClientsPage {
     this.backButton = page.locator('#app > div > div.actions > a:nth-child(1)')
   }
   //Methods:
-  // Method to perform a click action on the 'View' button:
-  async performView() {
+  async performClientEdit(randomClient, randomEmail, randomPhone){
     await this.viewButton.click();
-  };
-  async fillNameField(randomClient: string) {
+    await this.editClientMenu.click();
+    await this.editClientButton.click();
     await this.nameField.fill(randomClient);
-  };
-  // Method to fill the 'email' field with a given value:
-  async fillEmailField(randomEmail: string) {
     await this.emailField.fill(randomEmail);
-  };
-  // Method to fill the 'telephone' field with a given value:
-  async fillTelephoneField(randomPhone: string) {
     await this.telephoneField.fill(randomPhone);
+    await this.saveButton.click()
   };
-  async performSaveButton() {
-    await this.saveButton.click();
-  };
-  async performDeleteButton() {
+    async performDeleteButton() {
     await this.deleteButton.click();
   };
   async performBackButton() {

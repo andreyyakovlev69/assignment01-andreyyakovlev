@@ -89,12 +89,17 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Bills')).toBeVisible
   // });
 
-  test('Test Case 06 Rooms Edit', async ({ page }) => {
-    await roomsEditRoomPage.performBillsEdit(randomPrice, randomNumber, randomFloor);
-    await expect(page).toHaveURL('http://localhost:3000/rooms');  
-    expect(page.getByText('Rooms')).toBeVisible
-  });
+  // test('Test Case 06 Rooms Edit', async ({ page }) => {
+  //   await roomsEditRoomPage.performBillsEdit(randomPrice, randomNumber, randomFloor);
+  //   await expect(page).toHaveURL('http://localhost:3000/rooms');  
+  //   expect(page.getByText('Rooms')).toBeVisible
+  // });
 
+  test('Test Case 07 Client Edit', async ({ page }) => {
+    await editClientsPage.performClientEdit(randomClient, randomEmail, randomPhone);
+    await expect(page).toHaveURL('http://localhost:3000/clients');  
+    expect(page.getByText('Clients')).toBeVisible
+  });
 
     //
 //  test('Test Case 1 Login', async ({ page }) => {

@@ -22,8 +22,11 @@ export class DashboardPage {
 
   //Methods:
   async navigateToRooms() {
-    //await this.viewButton.click();
     await this.roomsViewButton.click();
+  };
+
+  async navigateToClient() {
+    await this.clientsViewButton.click();
   };
   // async navigeteToReservationMenu() {
   //   await this.viewButton.click();

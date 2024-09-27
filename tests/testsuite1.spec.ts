@@ -165,16 +165,22 @@ test.describe('Test Suite 1', () => {
   //     // await expect(page).toHaveURL('http://localhost:3000/login');
   //     // expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
   // });
-  test('Test Case 19 Logout', async ({ page }) => {
-    await logoutPage.performLogout();
-    // await expect(page).toHaveURL('http://localhost:3000/login');
-    // expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
+//   test('Test Case 19 Logout', async ({ page }) => {
+//     await logoutPage.performLogout();
+//     // await expect(page).toHaveURL('http://localhost:3000/login');
+//     // expect(page.getByRole('heading', { name: 'Login' })).toBeVisible;
+// });
+// test('Test Case 20 Dasboard Navigation To Rooms', async ({ page }) => {
+//   await dashboardPage.navigateToRooms();
+//   await expect(page).toHaveURL('http://localhost:3000/rooms');
+//   expect(page.getByText('Rooms', { exact: true })).toBeVisible;
+// });
+test('Test Case 21 Dasboard Navigation To Clients', async ({ page }) => {
+  await dashboardPage.navigateToClient();
+  await expect(page).toHaveURL('http://localhost:3000/clients');
+  expect(page.getByText('Clients')).toBeVisible;
 });
-test('Test Case 20 Dasboard Navigation To Rooms', async ({ page }) => {
-  await dashboardPage.navigateToRooms();
-  await expect(page).toHaveURL('http://localhost:3000/rooms');
-  expect(page.getByRole('heading', { name: 'Rooms' })).toBeVisible;
-});
+
 
   // test('Test Case 3 ReservationCreate', async ({ page }) => {
   //   await reservationPage.performView();

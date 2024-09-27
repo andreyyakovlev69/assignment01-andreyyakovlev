@@ -74,10 +74,10 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Bills')).toBeVisible
   //   });
 
-  test('Test Case 03 Reservation New Create', async ({ page }) => {
-    await newReservationPage.performCreateNewReservation(randomStartDate, randomEndDate);
-    expect(page.getByText('Reservations')).toBeVisible
-  });
+  // test('Test Case 03 Reservation New Create', async ({ page }) => {
+  //   await newReservationPage.performCreateNewReservation(randomStartDate, randomEndDate);
+  //   expect(page.getByText('Reservations')).toBeVisible
+  // });
 
   // test('Test Case 04 Room New Create', async ({ page }) => {
   //   await roomsNewRoomPage.performCreateNewRoom(randomNumber, randomFloor, randomPrice);
@@ -101,11 +101,11 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Clients')).toBeVisible
   // });
 
-  // test('Test Case 08 Reservation Edit', async ({ page }) => {
-  //   await editReservationPage.performReservationEdit(randomStartDate, randomEndDate);
-  //   await expect(page).toHaveURL('http://localhost:3000/reservations');  
-  //   expect(page.getByText('Reservations')).toBeVisible
-  // });
+  test('Test Case 08 Reservation Edit', async ({ page }) => {
+    await editReservationPage.performReservationEdit(randomStartDate, randomEndDate);
+    await expect(page).toHaveURL('http://localhost:3000/reservations');  
+    expect(page.getByText('Reservations')).toBeVisible
+  });
 
 
     //

@@ -139,10 +139,16 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible;
   //   });
 
-  test('Test Case 15 Clients Navigate To Create Client', async ({ page }) => {
-    await viewClientsPage.navigateToCreateClient();
-    await expect(page).toHaveURL('http://localhost:3000/client/new');
-    expect(page.getByText('New Client')).toBeVisible;
+  // test('Test Case 15 Clients Navigate To Create Client', async ({ page }) => {
+  //   await viewClientsPage.navigateToCreateClient();
+  //   await expect(page).toHaveURL('http://localhost:3000/client/new');
+  //   expect(page.getByText('New Client')).toBeVisible;
+  // });
+
+  test('Test Case 16 Reservations Navigate To Create Reservation', async ({ page }) => {
+    await reservationPage.navigateToCreateReservation();
+    await expect(page).toHaveURL('http://localhost:3000/reservation/new');
+    expect(page.getByText('New Reservation')).toBeVisible;
   });
 
   // test('Test Case 3 ReservationCreate', async ({ page }) => {

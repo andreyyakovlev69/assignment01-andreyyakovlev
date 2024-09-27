@@ -20,24 +20,29 @@ export class ReservationPage {
     this.backButton = page.locator('#app > div > div:nth-child(3) > a');
     this.logoutButton = page.locator('#app > header > div > div > button');
   }
-
-  //Methods:
-  async performView() {
-    await this.viewButton.click();
-  };
-  async performCreateReservationButton() {
-    await this.createReservationButton.click();
-  };
-  async performEditReservationButton() {
-    await this.editReservationButton.click();
-  };
-  async performEditReservationMenu() {
-    await this.editReservationMenu.click();
-  };
-  async performBackButton() {
-    await this.backButton.click();
-  };
-  async performLogoutButton() {
-    await this.logoutButton.click();
-  };
+//Methods:
+async navigateToCreateReservation() {
+  await this.viewButton.click();
+  await this.createReservationButton.click();
+};
+async navigeteToReservationMenu() {
+  await this.viewButton.click();
+  await this.editReservationMenu.click();
+  await this.editReservationButton.click();
+};
+async navigateToReservationDeleteButton() {
+  await this.viewButton.click();
+  await this.editReservationMenu.click();
+  await this.deleteReservationButton.click();
+};
+async navigateToLogoutButton() {
+  await this.viewButton.click();
+  await this.viewButton.click();
+  await this.logoutButton.click();
+};
+async navigateBack() {
+  await this.viewButton.click();
+  await this.viewButton.click();
+  await this.backButton.click();
+};
 }

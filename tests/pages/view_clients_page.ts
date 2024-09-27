@@ -34,7 +34,7 @@ export class ViewClientsPage {
     };
     async navigateToClientDeleteButton() {
       await this.viewButton.click();
-      await this.editClientButton.click();
+      await this.editClientMenu.click();
       await this.deleteClientButton.click();
     };
     async navigateToLogoutButton() {
@@ -48,29 +48,3 @@ export class ViewClientsPage {
       await this.backButton.click();
     };
   }
-
-//   //Methods:
-//   async performView() {
-//     await this.viewButton.click();
-//   };
-//   async performEditClientMenu() {
-//     await this.editClientMenu.click();
-//   };
-//   async performEditClientButton() {
-//     await this.editClientButton.click();
-//   };
-//   async performDeleteClientButton() {
-//     await this.deleteClientButton.click();
-//   };
-//   // Method to perform a click action on the 'Create Client' button:
-//   async performCreateClientButton() {
-//     await this.createClientButton.click();
-//   };
-//   async performBackButton() {
-//     await this.backButton.click();
-//   };
-
-//   async performLogoutButton() {
-//     await this.logoutButton.click();
-//   };
-// }

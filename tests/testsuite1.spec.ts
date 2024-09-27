@@ -107,15 +107,37 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Reservations')).toBeVisible
   // });
 
- test('Test Case 09 Login', async ({ page }) => {
-  await expect(page).toHaveURL('http://localhost:3000/');  
-  expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible;
-  });
+//  test('Test Case 09 Login', async ({ page }) => {
+//   await expect(page).toHaveURL('http://localhost:3000/');  
+//   expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible;
+//   });
 
-  // test('Test Case 2 Reservation', async ({ page }) => {
-  //   await reservationPage.performView();
-  //   expect(page.getByRole('link', { name: 'Create Reservation' })).toBeVisible;
+  // test('Test Case 10 Rooms Navigate To Create Room', async ({ page }) => {
+  //   await roomsPage.navigateToCreateRoom();
+  //   await expect(page).toHaveURL('http://localhost:3000/room/new');
+  //   expect(page.getByText('New Room')).toBeVisible;
   // });
+
+  // test('Test Case 11 Rooms Navigate To Edit Room', async ({ page }) => {
+  //   await roomsPage.navigeteToRoomMenu();
+  //   expect(page.getByText('ID')).toBeVisible;
+  // });
+
+  // test('Test Case 12 Rooms Navigate To Delete Room', async ({ page }) => {
+  //   await roomsPage.navigateToRoomDeleteButton();
+  //   expect(page.getByText('Delete')).toBeVisible;
+  // });
+
+  // test('Test Case 13 Rooms Navigate To Logout', async ({ page }) => {
+  //   await roomsPage.navigateToLogoutButton();
+  //   await expect(page).toHaveURL('http://localhost:3000/login');
+  //   });
+
+  test('Test Case 14 Rooms Navigate Back', async ({ page }) => {
+    await roomsPage.navigateBack();
+    await expect(page).toHaveURL('http://localhost:3000');
+    expect(page.getByRole('heading', { name: 'Tester Hotel Overview' })).toBeVisible;
+    });
 
   // test('Test Case 3 ReservationCreate', async ({ page }) => {
   //   await reservationPage.performView();

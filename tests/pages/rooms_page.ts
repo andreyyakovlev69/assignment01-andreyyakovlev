@@ -22,27 +22,26 @@ export class RoomsPage {
   }
 
   //Methods:
-  async performView() {
+  async navigateToCreateRoom() {
     await this.viewButton.click();
-  };
-  async performCreateRoomButton() {
     await this.createRoomButton.click();
   };
-  // Method to perform a click action on the 'roomMenuButton' button:
-  async performRoomMenuButton() {
+  async navigeteToRoomMenuButton() {
+    await this.viewButton.click();
     await this.roomMenuButton.click();
+    await this.roomEditButton.click();
   };
-  // Method to perform a click action on the 'roomEditButton' button:
-  async performRoomEditButton() {
+  async navigateToRoomDeleteButton() {
+    await this.viewButton.click();
     await this.roomMenuButton.click();
-  };
-  async performRoomDeleteButton() {
     await this.roomDeleteButton.click();
   };
-  async performLogoutButton() {
+  async navigateToLogoutButton() {
+    await this.viewButton.click();
     await this.logoutButton.click();
   };
-  async performBackButton() {
+  async navigateBack() {
+    await this.viewButton.click();
     await this.backButton.click();
   };
 }

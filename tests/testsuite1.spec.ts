@@ -1,4 +1,5 @@
 import {test, expect} from '@playwright/test';
+import { faker } from '@faker-js/faker';
 import {LoginPage} from './pages/login_page';
 import {LogoutPage} from './pages/logout_page';
 import { BillsPage } from './pages/bills_page';
@@ -13,7 +14,6 @@ import { RoomsEditRoomPage } from './pages/rooms_editRoom_page';
 import { ViewClientsPage } from './pages/view_clients_page';
 import { CreateClientPage } from './pages/create_client_page';
 import { EditClientsPage } from './pages/edit_clients_page';
-import { faker } from '@faker-js/faker';
 
 test.describe('Test Suite 1', () => {
   let loginPage: LoginPage;
@@ -32,8 +32,8 @@ test.describe('Test Suite 1', () => {
   let editClientsPage: EditClientsPage;
 
   // Generate random input data:
-  const randomStartDate = faker.date.soon().toISOString().split('T')[0];
-  const randomEndDate = faker.date.soon({refDate: randomStartDate}).toISOString().split('T')[0];
+  let randomStartDate = faker.date.soon({ days: 10 }).toISOString().split('T')[0];
+  let randomEndDate = faker.date.soon({ days: 4, refDate: randomStartDate}).toISOString().split('T')[0];
   const randomClient = faker.person.fullName();
   const randomEmail = faker.internet.email();
   const randomPhone = faker.phone.number();
@@ -74,10 +74,10 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Bills')).toBeVisible
   //   });
 
-  // test('Test Case 03 Reservation New Create', async ({ page }) => {
-  //   await newReservationPage.performCreateNewReservation(randomStartDate, randomEndDate);
-  //   expect(page.getByText('Reservations')).toBeVisible
-  // });
+  test('Test Case 03 Reservation New Create', async ({ page }) => {
+    await newReservationPage.performCreateNewReservation(randomStartDate, randomEndDate);
+    expect(page.getByText('Reservations')).toBeVisible
+  });
 
   // test('Test Case 04 Room New Create', async ({ page }) => {
   //   await roomsNewRoomPage.performCreateNewRoom(randomNumber, randomFloor, randomPrice);
@@ -95,11 +95,18 @@ test.describe('Test Suite 1', () => {
   //   expect(page.getByText('Rooms')).toBeVisible
   // });
 
-  test('Test Case 07 Client Edit', async ({ page }) => {
-    await editClientsPage.performClientEdit(randomClient, randomEmail, randomPhone);
-    await expect(page).toHaveURL('http://localhost:3000/clients');  
-    expect(page.getByText('Clients')).toBeVisible
-  });
+  // test('Test Case 07 Client Edit', async ({ page }) => {
+  //   await editClientsPage.performClientEdit(randomClient, randomEmail, randomPhone);
+  //   await expect(page).toHaveURL('http://localhost:3000/clients');  
+  //   expect(page.getByText('Clients')).toBeVisible
+  // });
+
+  // test('Test Case 08 Reservation Edit', async ({ page }) => {
+  //   await editReservationPage.performReservationEdit(randomStartDate, randomEndDate);
+  //   await expect(page).toHaveURL('http://localhost:3000/reservations');  
+  //   expect(page.getByText('Reservations')).toBeVisible
+  // });
+
 
     //
 //  test('Test Case 1 Login', async ({ page }) => {

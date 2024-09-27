@@ -25,9 +25,7 @@ export class EditReservationPage {
     this.createdField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=text]');
     this.startField = page.locator('div').filter({ hasText: /^Start \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
     this.endField = page.locator('div').filter({ hasText: /^End \(Format YYYY-MM-DD\)$/ }).getByPlaceholder('YYYY-MM-DD');
-    // this.clientField = page.locator('div').filter({ hasText: /^Client- Not selected -Andrea Paucek \(#1\)Mikael Eriksson \(#2\)$/ }).getByRole('combobox');
     this.clientField = page.getByRole('combobox').first();
-    // this.roomField = page.locator('div').filter({ hasText: /^Room- Not selected -Floor 1, Room 288Floor 1, Room 102$/ }).getByRole('combobox');
     this.roomField = page.locator('div').filter({ hasText: /^Room- Not selected / }).getByRole('combobox');
     this.billField = page.locator('#app > div > div:nth-child(2) > div:nth-child(7) > select > option:nth-child(2)');
     this.backButton = page.getByRole('link', { name: 'Back' });

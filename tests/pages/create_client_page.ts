@@ -1,8 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
-// Class representing the 'Create Client' page using the Page Object Model (POM) design pattern.
 export class CreateClientPage {
-  // Declaring class properties for the page and various buttons (view, create client, and save client).
   readonly page: Page;
   readonly viewButton: Locator;
   readonly newClientHeader: Locator;
@@ -14,9 +12,7 @@ export class CreateClientPage {
   readonly emailField: Locator;
   readonly phoneField: Locator;
 
-  // Constructor to initialize the class with a page instance and define locators for the elements:
   constructor(page: Page) {
-    // Assign the page passed to the constructor to the class's 'page' property:
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(2) > a');
     this.newClientHeader = page.locator('#app > div > h2 > div');

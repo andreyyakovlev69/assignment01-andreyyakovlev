@@ -1,7 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
 export class ViewClientsPage {
-  // Declaring class properties for the page and various buttons:
   readonly page: Page;
   readonly viewButton: Locator;
   readonly editClientMenu: Locator;
@@ -11,22 +10,15 @@ export class ViewClientsPage {
   readonly createClientButton: Locator;
   readonly backButton: Locator;
 
-  // Constructor to initialize the class with a page instance and define locators for the elements:
   constructor(page: Page) {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(2) > a');
-    // this.editClientMenu = page.locator('#app > div > div.clients > div:nth-child(1) > div.action > img');
     this.editClientMenu = page.locator('img').first();
-    // this.editClientButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.menu > a:nth-child(1)');
     this.editClientButton = page.getByText('Edit');
-    // this.deleteClientButton = page.locator('#app > div > div.clients > div:nth-child(1) > div.menu > a:nth-child(2)');
     this.deleteClientButton = page.getByText('Delete');
     this.logoutButton = page.getByRole('button', { name: 'Logout' });
     this.createClientButton = page.getByRole('link', { name: 'Create Client' });
     this.backButton = page.getByRole('link', { name: 'Back' });
-    // this.logoutButton = page.locator('#app > header > div > div > button');
-    // this.createClientButton = page.locator('#app > div > h2 > a');
-    // this.backButton = page.locator('#app > div > div:nth-child(3) > a')
   }
     //Methods:
     async navigateToCreateClient() {

@@ -1,7 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
 export class BillsNewBillPage {
-  // Declaring class properties for the page and various buttons:
   readonly page: Page;
   readonly viewButton: Locator;
   readonly createBillButton: Locator;
@@ -11,7 +10,6 @@ export class BillsNewBillPage {
   readonly logoutButton: Locator;
   readonly backButton: Locator;
 
-  // Constructor to initialize the class with a page instance and define locators for the elements:
   constructor(page: Page) {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(3) > a');

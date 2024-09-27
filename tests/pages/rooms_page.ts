@@ -14,7 +14,6 @@ export class RoomsPage {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(1) > a');
     this.createRoomButton = page.getByRole('link', { name: 'Create Room' });
-    // this.roomMenuButton = page.getByRole('img');
     this.roomMenuButton = page.locator('.action').first();;
     this.roomEditButton = page.getByText('Edit');
     this.roomDeleteButton = page.getByText('Delete');

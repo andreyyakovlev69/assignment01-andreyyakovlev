@@ -2,7 +2,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
 export class BillsEditBillPage {
-  // Declaring class properties for the page and various buttons:
   readonly page: Page;
   readonly viewButton: Locator;
   readonly editBillMenu: Locator;
@@ -14,7 +13,6 @@ export class BillsEditBillPage {
   readonly logoutButton: Locator;
   readonly backButton: Locator;
 
-  // Constructor to initialize the class with a page instance and define locators for the elements:
   constructor(page: Page) {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(3) > a');
@@ -29,7 +27,6 @@ export class BillsEditBillPage {
   }
 
   //Methods:
-  // Method to perform an action on the '...' button:
   async performBillsEdit(randomPrice: string){
     await this.viewButton.click();
     await this.editBillMenu.click();

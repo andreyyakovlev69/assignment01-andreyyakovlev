@@ -1,7 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
 export class BillsPage {
-  // Declaring class properties for the page and various buttons:
   readonly page: Page;
   readonly viewButton: Locator;
   readonly logoutButton: Locator;
@@ -11,7 +10,6 @@ export class BillsPage {
   readonly deleteBillButton: Locator;
   readonly backButton: Locator;
 
-  // Constructor to initialize the class with a page instance and define locators for the elements:
   constructor(page: Page) {
     this.page = page;
     this.editBillMenu = page.locator('#app > div > div.bills > div > div.action > img');
@@ -48,29 +46,3 @@ async navigateBack() {
   await this.backButton.click();
 };
 }
-//   //Methods:
-//   // Method to perform a click action on the 'View' button:
-//   async performView() {
-//     await this.viewButton.click();
-//   };
-
-//   // Method to perform a click action on the 'Create Client' button:
-//   async performCreateBillButton() {
-//     await this.createBillButton.click();
-//   };
-//   async performEditBillMenu() {
-//     await this.editBillMenu.click();
-//   };
-//   async performEditBillButton() {
-//     await this.editBillButton.click();
-//   };
-//   async performDeleteBillButton() {
-//     await this.deleteBillButton.click();
-//   };
-//   async performBackButton() {
-//     await this.backButton.click();
-//   };
-//   async performLogoutButton() {
-//     await this.logoutButton.click();
-//   };
-// }

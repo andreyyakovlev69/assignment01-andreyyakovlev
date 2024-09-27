@@ -33,7 +33,6 @@ export class RoomsNewRoomPage {
   async performCreateNewRoom(randomNumber, randomFloor, randomPrice){
     await this.viewButton.click();
     await this.createRoomButton.click();
-    //To fill the '...' fields with a given value:
     await this.categoryField.selectOption({index:1});
     await this.numberField.fill(randomNumber);
     await this.floorField.fill(randomFloor);

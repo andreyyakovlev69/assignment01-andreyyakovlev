@@ -20,14 +20,10 @@ export class RoomsEditRoomPage {
   constructor(page: Page) {
     this.page = page;
     this.viewButton = page.locator('#app > div > div > div:nth-child(1) > a');
-    // this.roomMenuButton = page.getByRole('img');
-    // this.roomEditButton = page.getByText('Edit');
     this.logoutButton = page.getByRole('button', { name: 'Logout' });
     this.backButton = page.getByRole('link', { name: 'Back' });
     this.roomMenuButton = page.locator('#app > div > div.rooms > div:nth-child(1) > div.action > img');
     this.roomEditButton = page.locator('#app > div > div.rooms > div:nth-child(1) > div.menu > a:nth-child(1)');
-    // this.logoutButton = page.locator('#app > header > div > div > button');
-    // this.backButton = page.locator('#app > div > div.actions > a:nth-child(1)');
     this.saveButton = page.locator('#app > div > div.actions > a.btn.blue');
     this.idField = page.locator('#app > div > div:nth-child(2) > div:nth-child(1) > input[type=text]');
     this.createdField = page.locator('#app > div > div:nth-child(2) > div:nth-child(2) > input[type=text]');

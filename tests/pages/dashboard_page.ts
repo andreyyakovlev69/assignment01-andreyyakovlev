@@ -13,15 +13,12 @@ export class DashboardPage {
   constructor(page: Page) {
     this.page = page;
     this.logoutButton = page.getByRole('button', { name: 'Logout' });
-    // this.roomsViewButton = page.locator('div').filter({ hasText: /^RoomsNumber: 0View$/ }).getByRole('link');
     this.roomsViewButton = page.locator("#app > div > div > div:nth-child(1) > a");
-    // this.clientsViewButton = page.locator('div').filter({ hasText: /^ClientsNumber: / }).getByRole('link');
     this.clientsViewButton = page.locator('#app > div > div > div:nth-child(2) > a');
     this.billsViewButton = page.locator('div').filter({ hasText: /^BillsTotal: / }).getByRole('link');
     this.reservationsViewButton = page.locator('div').filter({ hasText: /^ReservationsTotal: / }).getByRole('link');
     this.testerHotelOverviewHeader = page.getByRole('heading', { name: 'Tester Hotel Overview' });
   }
-
   //Methods:
   async navigateToRooms() {
     await this.roomsViewButton.click();
